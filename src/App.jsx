@@ -3,18 +3,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DialIn from "./pages/DialIn";
 import Dashboard from "./pages/Dashboard";
 import AppLayout from "./ui/AppLayout";
+import Settings from "./pages/Settings";
+import Beans from "./pages/Beans";
+import History from "./pages/History";
 
 const App = () => {
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route element={<AppLayout />}>
-					<Route index element={<Dashboard />} />
-					<Route path="dial-in" element={<DialIn />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dial-in" element={<DialIn />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="beans" element={<Beans />} />
+          <Route path="history" element={<History />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

@@ -1,0 +1,42 @@
+import Beans from "../pages/Beans";
+import NavItem from "./NavItem";
+
+import { NAV_LINKS } from "../config";
+
+const Nav = ({ type = "bottom", isOpen = true }) => {
+  if (type === "bottom")
+    return (
+      <nav
+        className={`fixed bottom-0 z-50 flex h-14 w-full justify-center backdrop-blur-3xl sm:bottom-6 sm:left-1/2 sm:max-w-96 sm:translate-x-[-50%] sm:px-4 lg:hidden`}
+      >
+        {NAV_LINKS.map((item) => (
+          <NavItem to={item.to} key={item.to}>
+            <item.icon />
+            <p
+              className={`${!isOpen && "hidden"} ${type === "bottom" && "text-xs"}`}
+            >
+              {item.label}
+            </p>
+          </NavItem>
+        ))}
+      </nav>
+    );
+
+  if (type === "aside")
+    return (
+      <nav
+        className={`mt-30 flex w-full flex-col gap-1 ${isOpen ? "items-start justify-center" : "items-center"}`}
+      >
+        {NAV_LINKS.filter((item) => item.label !== "Dial-In").map((item) => (
+          <NavItem to={item.to} key={item.to}>
+            <span className="flex items-center gap-2">
+              <item.icon size={24} />
+              {isOpen && <p className="text-sm">{item.label}</p>}
+            </span>
+          </NavItem>
+        ))}
+      </nav>
+    );
+};
+
+export default Nav;

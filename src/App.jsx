@@ -6,6 +6,7 @@ import AppLayout from "./ui/AppLayout";
 import Settings from "./pages/Settings";
 import Beans from "./pages/Beans";
 import History from "./pages/History";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="settings" element={<Settings />} />
           <Route path="beans" element={<Beans />} />
           <Route path="history" element={<History />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,7 +9,7 @@ const Aside = () => {
     <aside
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
-      className={` ${isOpen && "w-40"} hidden h-full w-14 flex-col items-center border-r-2 border-gray-200 bg-white px-1 transition-all ease-in-out lg:fixed lg:top-14 lg:flex`}
+      className={` ${isOpen && "w-40"} hidden h-full w-14 flex-col items-center bg-white px-1 transition-all ease-in-out lg:fixed lg:top-14 lg:flex`}
     >
       <Nav type="aside" isOpen={isOpen} />
     </aside>

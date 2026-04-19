@@ -6,10 +6,14 @@ import GridItem from "../ui/GridItem";
 const Dashboard = () => {
   return (
     <>
-      <h1>Welcome, User</h1>
+      <h2 className="pt-3 pl-4 text-xl font-semibold">Welcome, User</h2>
 
       <Grid>
-        <GridItem colSpan={8}>
+        <GridItem colSpan={4}>
+          <Card>balbvalbalbalbl</Card>
+        </GridItem>
+
+        <GridItem colSpan={4}>
           <Card>balbvalbalbalbl</Card>
         </GridItem>
 
@@ -21,7 +25,23 @@ const Dashboard = () => {
           <Card>balbvalbalbalbl</Card>
         </GridItem>
 
-        <GridItem colSpan={12}>
+        <GridItem colSpan={8} rowSpan={2}>
+          <Card>balbvalbalbalbl</Card>
+        </GridItem>
+
+        <GridItem colSpan={4} rowSpan={2}>
+          <Card>balbvalbalbalbl</Card>
+        </GridItem>
+
+        <GridItem colSpan={3} rowSpan={1}>
+          <Card>balbvalbalbalbl</Card>
+        </GridItem>
+
+        <GridItem colSpan={9} rowSpan={2}>
+          <Card>balbvalbalbalbl</Card>
+        </GridItem>
+
+        <GridItem colSpan={3} rowSpan={1}>
           <Card>balbvalbalbalbl</Card>
         </GridItem>
       </Grid>

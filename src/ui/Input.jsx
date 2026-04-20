@@ -1,12 +1,12 @@
 import React from "react";
+import Label from "./Label";
 
-const Input = ({ label, type }) => {
+const Input = ({ label, type, id }) => {
   return (
     <>
-      <label className="text-sm font-semibold" htmlFor={label}>
-        {label}
-      </label>
-      <input type={type} id={label} className="rounded-md bg-white p-2" />
+      <Label id={id} label={label}>
+        <input type={type} id={id} className="rounded-md bg-white p-2" />
+      </Label>
     </>
   );
 };

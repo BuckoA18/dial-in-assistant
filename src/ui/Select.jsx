@@ -1,14 +1,14 @@
 import React, { Children } from "react";
+import Label from "./Label";
 
-const Select = ({ children, label }) => {
+const Select = ({ children, label, id }) => {
   return (
     <>
-      <label htmlFor="label" className="block text-sm font-semibold">
-        {label}
-      </label>
-      <select id={label} className="rounded-md bg-white p-2">
-        {children}
-      </select>
+      <Label id={id} label={label}>
+        <select id={id} className="rounded-md bg-white p-2">
+          {children}
+        </select>
+      </Label>
     </>
   );
 };

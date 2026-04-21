@@ -5,7 +5,11 @@ const Input = ({ label, type, id }) => {
   return (
     <>
       <Label id={id} label={label}>
-        <input type={type} id={id} className="rounded-md bg-white p-2" />
+        <input
+          type={type}
+          id={id}
+          className="rounded-md bg-white p-2 shadow-sm"
+        />
       </Label>
     </>
   );

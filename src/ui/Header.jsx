@@ -4,7 +4,7 @@ import { User } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="z-50 flex h-10 w-full items-center justify-between bg-white px-3 sm:h-14 lg:fixed">
+    <header className="z-50 flex h-10 w-full items-center justify-between bg-white px-3 text-stone-900 sm:h-14 lg:fixed">
       <h1 className="font-semibold">LOGO</h1>
       <Link to="profile">
         <User />

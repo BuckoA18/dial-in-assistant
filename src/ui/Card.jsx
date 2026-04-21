@@ -3,9 +3,7 @@ import React from "react";
 
 const Card = ({ children }) => {
   return (
-    <div
-      className={`text-gray-900-200 h-full w-full rounded-xs border border-gray-300 bg-white p-2`}
-    >
+    <div className={`h-full w-full rounded-2xl p-2 text-stone-900 shadow-md`}>
       {children}
     </div>
   );

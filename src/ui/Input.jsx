@@ -8,7 +8,7 @@ const Input = ({ label, type, id }) => {
         <input
           type={type}
           id={id}
-          className="rounded-md bg-white p-2 shadow-sm"
+          className="rounded-md border border-stone-200 p-2 shadow-xs"
         />
       </Label>
     </>

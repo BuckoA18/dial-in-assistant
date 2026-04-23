@@ -7,7 +7,7 @@ const Select = ({ children, label, id }) => {
       <Label id={id} label={label}>
         <select
           id={id}
-          className="mt-1 rounded-2xl bg-white px-2 py-2 shadow-sm outline-none focus:ring-2 focus:ring-purple-700 focus:ring-offset-2"
+          className="mt-1 rounded-2xl border border-stone-200 px-2 py-2 shadow-xs outline-none focus:ring-2 focus:ring-stone-800 focus:ring-offset-2"
         >
           {children}
         </select>

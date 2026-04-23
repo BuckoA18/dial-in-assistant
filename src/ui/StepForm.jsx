@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { MoveLeft, Coffee, Star, Zap, Check, ChevronLeft } from "lucide-react";
+import { Coffee, Star, Zap, Cog, ChevronLeft } from "lucide-react";
 import StepFormContent from "./StepFormContent";
 import Button from "./Button";
 import StepCounter from "./StepCounter";
@@ -8,16 +8,17 @@ import Step from "./Step";
 import BackButton from "./BackButton";
 
 const MIN_STEP = 1;
-const MAX_STEP = 3;
+const MAX_STEP = 4;
 
 const STEPS = [
   { step: 1, icon: <Coffee size={20} /> },
-  { step: 2, icon: <Zap size={20} /> },
-  { step: 3, icon: <Star size={20} /> },
+  { step: 2, icon: <Cog size={20} /> },
+  { step: 3, icon: <Zap size={20} /> },
+  { step: 4, icon: <Star size={20} /> },
 ];
 
 const StepForm = ({ onSubmit }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
 
   return (
     <form

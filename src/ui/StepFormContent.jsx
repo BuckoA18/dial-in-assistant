@@ -2,6 +2,7 @@ import Select from "../ui/Select";
 import Input from "../ui/Input";
 import RangeInput from "../ui/RangeInput";
 import Textarea from "../ui/Textarea";
+import WheelPicker from "./WheelPicker";
 
 const StepFormContent = ({ currentStep }) => {
   if (currentStep === 1)
@@ -27,7 +28,9 @@ const StepFormContent = ({ currentStep }) => {
       </div>
     );
 
-  if (currentStep === 2)
+  if (currentStep === 2) return <WheelPicker />;
+
+  if (currentStep === 3)
     return (
       <>
         <Input label="Grind setting" id="grindSetting" />
@@ -37,7 +40,7 @@ const StepFormContent = ({ currentStep }) => {
       </>
     );
 
-  if (currentStep === 3)
+  if (currentStep === 4)
     return (
       <>
         <RangeInput label="Taste" id="taste" />

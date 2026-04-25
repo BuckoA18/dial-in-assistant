@@ -8,13 +8,12 @@ import Step from "./Step";
 import BackButton from "./BackButton";
 
 const MIN_STEP = 1;
-const MAX_STEP = 4;
+const MAX_STEP = 3;
 
 const STEPS = [
   { step: 1, icon: <Coffee size={20} /> },
   { step: 2, icon: <Cog size={20} /> },
-  { step: 3, icon: <Zap size={20} /> },
-  { step: 4, icon: <Star size={20} /> },
+  { step: 3, icon: <Star size={20} /> },
 ];
 
 const StepForm = ({ onSubmit }) => {

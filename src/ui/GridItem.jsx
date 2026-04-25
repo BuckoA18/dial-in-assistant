@@ -26,9 +26,13 @@ const GridItem = ({ children, colSpan, rowSpan }) => {
     6: "row-span-6",
   };
 
-  const cols = colSpan ? colClass[colSpan] : "col-span-12";
+  const cols = colSpan ? colClass[colSpan] : "";
   const rows = rowSpan ? rowClass[rowSpan] : "";
-  return <div className={twMerge(cols, rows)}>{children}</div>;
+  return (
+    <div className={twMerge(cols, rows, "flex items-center justify-center")}>
+      {children}
+    </div>
+  );
 };
 
 export default GridItem;

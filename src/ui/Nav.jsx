@@ -7,7 +7,7 @@ const Nav = ({ type = "bottom", isOpen = true, iconSize }) => {
   if (type === "bottom")
     return (
       <nav
-        className={`fixed bottom-0 z-50 flex h-14 w-full items-center justify-center rounded rounded-t-lg backdrop-blur-xl sm:bottom-6 sm:left-1/2 sm:max-w-96 sm:translate-x-[-50%] sm:rounded-2xl sm:px-4 lg:hidden`}
+        className={`fixed bottom-0 flex h-14 w-full items-center justify-center rounded rounded-t-lg backdrop-blur-xl sm:bottom-6 sm:left-1/2 sm:max-w-96 sm:translate-x-[-50%] sm:rounded-2xl sm:px-4 lg:hidden`}
       >
         {NAV_LINKS.map((item) => (
           <NavItem to={item.to} key={item.to}>

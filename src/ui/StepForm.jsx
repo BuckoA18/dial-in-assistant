@@ -17,7 +17,7 @@ const STEPS = [
 ];
 
 const StepForm = ({ onSubmit }) => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
 
   return (
     <form

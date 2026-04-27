@@ -8,7 +8,7 @@ const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
   const range = calcRange(min, max, step);
   // total item w + gap
   const optionWidth = 48;
-  const xPadding = 152;
+  // const xPadding = 152;
 
   const handleScroll = (e) => {
     const container = e.target;

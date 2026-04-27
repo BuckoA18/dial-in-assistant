@@ -6,7 +6,6 @@ import Button from "./Button";
 import StepCounter from "./StepCounter";
 import Step from "./Step";
 import BackButton from "./BackButton";
-import CustomOption from "./CustomOption";
 
 const MIN_STEP = 1;
 const MAX_STEP = 3;
@@ -18,7 +17,7 @@ const STEPS = [
 ];
 
 const StepForm = ({ onSubmit }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(3);
 
   return (
     <form

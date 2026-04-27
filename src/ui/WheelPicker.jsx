@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { calcRange } from "./../utils";
+import Input from "./Input";
 
 const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
   const [currentValue, setCurrentvalue] = useState(1);
   const range = calcRange(min, max, step);
-  // total item w + gap (40px + 40px)
-  const optionWidth = 80;
+  // total item w + gap
+  const optionWidth = 48;
   const xPadding = 152;
 
   const handleScroll = (e) => {
@@ -19,14 +20,20 @@ const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
 
   return (
     <div className="flex flex-col items-center">
+      <Input
+        value={currentValue}
+        type="number"
+        isDisabled={true}
+        label="Grind setting"
+      />
       <div
         className="relative flex h-40 w-76 items-center"
         onScroll={handleScroll}
       >
-        <div className="pointer-events-none absolute left-1/2 z-10 h-18 w-14 -translate-x-1/2 rounded-lg border-4 border-stone-600"></div>
+        <div className="pointer-events-none absolute left-1/2 z-10 h-16 w-10 -translate-x-1/2 rounded-sm border-3 border-stone-400 bg-stone-200 opacity-30 shadow-sm"></div>
         <div
           onScroll={handleScroll}
-          className={`no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-10 overflow-hidden overflow-x-auto scroll-smooth px-[152px]`}
+          className={`no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-2 overflow-hidden overflow-x-auto scroll-smooth px-[152px]`}
         >
           {range.map((value) => (
             <WheelPickerOption
@@ -41,17 +48,17 @@ const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
   );
 };
 
-const WheelPickerOption = ({ value, isActive }) => {
+const WheelPickerOption = ({ isActive }) => {
   return (
     <div className="flex min-w-10 snap-center flex-col items-center">
       <span
-        className={`h-6 rounded-full transition-all ${isActive ? "h-8 w-1 bg-stone-600" : "w-0.5 bg-stone-300"}`}
+        className={`h-8 w-0.5 rounded-full transition-all ${isActive ? "h-10 bg-stone-800" : " bg-stone-300"}`}
       ></span>
-      <p
+      {/* <p
         className={`transition-all ${isActive ? " font-semibold text-stone-600" : "text-xs text-stone-300"}`}
       >
         {value}
-      </p>
+      </p> */}
     </div>
   );
 };

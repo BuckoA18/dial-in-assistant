@@ -5,39 +5,41 @@ import WheelPicker from "./WheelPicker";
 import Grid from "./Grid";
 import GridItem from "./GridItem";
 import Select from "react-select";
-import { components } from "react-select";
-const beanOptions = [
-  { label: "Brasil", value: "Brasil", img: "imageBR" },
-  { label: "Ethiopie", value: "Ethiopie", img: "imageET" },
-  { label: "India", value: "India", img: "imageIn" },
-];
+import CustomOption from "./CustomOption";
 
-const CustomOption = (props) => {
-  return (
-    <components.Option {...props}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ fontWeight: "bold", color: "blue" }}>
-          {props.data.img}
-        </span>
-        <p style={{ margin: 0, fontSize: "12px", color: "#666" }}>
-          {props.data.label}
-        </p>
-      </div>
-    </components.Option>
-  );
-};
+const beanOptions = [
+  { label: "Brasil", value: "brasil", countryCode: "BE" },
+  { label: "Ethiopie", value: "ethiopie", countryCode: "ET" },
+  { label: "India", value: "india", countryCode: "IN" },
+];
 
 const StepFormContent = ({ currentStep }) => {
   if (currentStep === 1)
     return (
-      <div className="flex flex-col gap-4">
-        <Select options={beanOptions} components={{ Option: CustomOption }} />
+      <div className="flex h-full flex-col">
+        <Select
+          options={beanOptions}
+          defaultValue={beanOptions[0]}
+          components={{ Option: CustomOption }}
+          styles={{
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+            }),
+          }}
+        />
+
+        <span className="mt-auto">
+          <WheelPicker min={1} max={50} />
+        </span>
       </div>
     );
 
   if (currentStep === 2)
     return (
-      <div className="flex grow flex-col gap-4">
+      <div className="flex h-full flex-col gap-4">
         <span className="flex justify-center gap-8">
           <Input
             label="Coffee in (g)"
@@ -59,19 +61,15 @@ const StepFormContent = ({ currentStep }) => {
           placeholder="28"
           type="number"
         />
-
-        <span className="">
-          <WheelPicker min={1} max={50} />
-        </span>
       </div>
     );
 
   if (currentStep === 3)
     return (
-      <>
+      <div className="h-full">
         <RangeInput label="Taste" id="taste" />
         <Textarea label="Notes" id="notes" />
-      </>
+      </div>
     );
 };
 

@@ -6,6 +6,7 @@ import Button from "./Button";
 import StepCounter from "./StepCounter";
 import Step from "./Step";
 import BackButton from "./BackButton";
+import CustomOption from "./CustomOption";
 
 const MIN_STEP = 1;
 const MAX_STEP = 3;

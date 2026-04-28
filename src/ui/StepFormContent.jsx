@@ -1,5 +1,4 @@
 import Input from "../ui/Input";
-import RangeInput from "../ui/RangeInput";
 import Textarea from "../ui/Textarea";
 import WheelPicker from "./WheelPicker";
 import Grid from "./Grid";
@@ -7,6 +6,7 @@ import GridItem from "./GridItem";
 import Select from "react-select";
 import CustomOption from "./CustomOption";
 import CustomSingleValue from "./CustomSingleValue";
+import TasteRangeInput from "./TasteRangeInput";
 
 const beanOptions = [
   { label: "Brasil", value: "brasil", countryCode: "BE" },
@@ -64,8 +64,7 @@ const StepFormContent = ({ currentStep }) => {
   if (currentStep === 3)
     return (
       <div className="h-full">
-        <RangeInput label="Taste" id="taste" />
-        <Textarea label="Notes" id="notes" />
+        <TasteRangeInput />
       </div>
     );
 };

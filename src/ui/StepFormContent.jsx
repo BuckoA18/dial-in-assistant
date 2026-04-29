@@ -3,13 +3,14 @@ import Textarea from "../ui/Textarea";
 import WheelPicker from "./WheelPicker";
 import Grid from "./Grid";
 import GridItem from "./GridItem";
-import Select from "react-select";
+import Select from "./Select";
 import CustomOption from "./CustomOption";
 import CustomSingleValue from "./CustomSingleValue";
 import TasteRangeInput from "./TasteRangeInput";
+import Label from "./Label";
 
 const beanOptions = [
-  { label: "Brasil", value: "brasil", countryCode: "BE" },
+  { label: "Brasil", value: "brasil", countryCode: "BR" },
   { label: "Ethiopie", value: "ethiopie", countryCode: "ET" },
   { label: "India", value: "india", countryCode: "IN" },
 ];
@@ -18,20 +19,15 @@ const StepFormContent = ({ currentStep }) => {
   if (currentStep === 1)
     return (
       <div className="flex h-full flex-col">
-        <label className="flex flex-col gap-4 text-xl font-semibold text-stone-800">
-          On The Grinder
-          <Select
-            options={beanOptions}
-            defaultValue={beanOptions[0]}
-            components={{
-              Option: CustomOption,
-              SingleValue: CustomSingleValue,
-            }}
-          />
-        </label>
-
+        <Label id="bean">On The Grinder</Label>
+        <Select id="bean">
+          {beanOptions.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
+        </Select>
         <span className="mt-auto">
-          <WheelPicker min={1} max={50} />
+          <Label id="grindPicker">Grinder Settings</Label>
+          <WheelPicker min={1} max={50} id="grindPicker" />
         </span>
       </div>
     );

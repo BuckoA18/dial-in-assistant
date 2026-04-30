@@ -3,7 +3,7 @@ import React from "react";
 const Label = ({ children, id }) => {
   return (
     <label
-      className="flex flex-col gap-1 text-sm font-semibold text-stone-400"
+      className="mr-auto mb-2 text-sm font-semibold text-stone-800"
       htmlFor={id}
     >
       {children}

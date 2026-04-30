@@ -26,8 +26,7 @@ const StepFormContent = ({ currentStep }) => {
           ))}
         </Select>
         <span className="mt-auto">
-          <Label id="grindPicker">Grinder Settings</Label>
-          <WheelPicker min={1} max={50} id="grindPicker" />
+          <WheelPicker min={1} max={50} />
         </span>
       </div>
     );
@@ -35,18 +34,22 @@ const StepFormContent = ({ currentStep }) => {
   if (currentStep === 2)
     return (
       <div className="flex h-full flex-col items-center gap-4">
-        <Input
-          label="Coffee in (g)"
-          id="coffeeIn"
-          placeholder="18"
-          type="number"
-        />
+        <label htmlFor="coffeeIn" className="mr-auto text-sm font-semibold">
+          Coffee In (g)
+        </label>
+        <Input id="coffeeIn" placeholder="18" type="number" />
+        <label htmlFor="coffeeIn" className="mr-auto text-sm font-semibold">
+          Coffee Out (g)
+        </label>
         <Input
           label="Coffee out (g)"
           id="coffeeOut"
           placeholder="38.4"
           type="number"
         />
+        <label htmlFor="coffeeIn" className="mr-auto text-sm font-semibold">
+          Extraction Time (s)
+        </label>
 
         <Input
           label="Time of extraction (s)"

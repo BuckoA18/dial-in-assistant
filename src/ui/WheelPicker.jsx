@@ -1,29 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import { calcRange } from "./../utils";
+import { ArrowRight } from "lucide-react";
 import Input from "./Input";
+import Label from "./Label";
 
 const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
   const [currentValue, setCurrentValue] = useState(min);
-  const [isTyping, setIsTyping] = useState(false); // New state to track input focus
+  const [isScrolledByKeys, setIsScrolledByKeys] = useState(false);
   const scrollRef = useRef(null);
 
   const range = calcRange(min, max, step);
   const optionWidth = 48;
 
-  // 1. Only scroll the wheel if the user IS NOT typing
   useEffect(() => {
-    if (scrollRef.current && !isTyping) {
-      const targetScroll = (currentValue - min) * optionWidth;
-      scrollRef.current.scrollTo({
-        left: targetScroll,
-        behavior: "smooth",
-      });
+    if (isScrolledByKeys && scrollRef.current) {
+      const target = (currentValue - min) * optionWidth;
+      scrollRef.current.scrollTo({ left: target, behavior: "smooth" });
+
+      const timeout = setTimeout(() => {
+        setIsScrolledByKeys(false);
+      }, 100);
+      return () => clearTimeout(timeout);
     }
-  }, [currentValue, min, isTyping]);
+  }, [currentValue, min, isScrolledByKeys]);
 
   const handleScroll = (e) => {
-    // 2. If the user is typing, ignore scroll events (prevents snapping conflicts)
-    if (isTyping) return;
+    if (isScrolledByKeys) return;
 
     const container = e.target;
     const scrollLeft = container.scrollLeft;
@@ -34,48 +36,45 @@ const WheelPicker = ({ min = 1, max = 500, step = 1 }) => {
     }
   };
 
-  const handleChange = (e) => {
-    // Allow empty string so user can backspace and type a new number
-    if (e.target.value === "") {
-      setCurrentValue("");
-      return;
+  const handleKeyDown = (e) => {
+    if (e.code === "ArrowRight") {
+      e.preventDefault(); // Stop the whole page from scrolling
+      if (currentValue < max) {
+        setIsScrolledByKeys(true);
+        setCurrentValue((prev) => prev + step);
+      }
     }
 
-    const value = Number(e.target.value);
-    if (value >= 0) {
-      // Temporary allow values outside range while typing
-      setCurrentValue(value);
+    if (e.code === "ArrowLeft") {
+      e.preventDefault();
+      if (currentValue > min) {
+        setIsScrolledByKeys(true);
+        setCurrentValue((prev) => prev - step);
+      }
     }
-  };
-
-  const handleBlur = () => {
-    setIsTyping(false);
-    // 3. Clamp the value only when the user finishes typing
-    let finalValue = Number(currentValue);
-    if (finalValue < min) finalValue = min;
-    if (finalValue > max) finalValue = max;
-    setCurrentValue(finalValue);
   };
 
   return (
     <div className="flex flex-col items-center">
+      <Label id="grinderSetting">Grind Setting</Label>
       <Input
+        id="grinderSetting"
         value={currentValue}
-        type="number"
-        onChange={handleChange}
-        onFocus={() => setIsTyping(true)} // Stop wheel interference
-        onBlur={handleBlur} // Restart wheel interference
+        type="grinder"
+        isDisabled={true}
       />
-
       <div className="relative flex h-40 w-76 items-center">
-        <div className="pointer-events-none absolute left-1/2 z-10 h-16 w-10 -translate-x-1/2 rounded-sm border-3 border-stone-400 bg-stone-200 opacity-30 shadow-sm"></div>
+        <div className="pointer-events-none absolute left-1/2 z-10 h-16 w-10 -translate-x-1/2 rounded-sm border-3 border-stone-400 bg-stone-200 opacity-30 shadow-sm focus:ring-stone-800"></div>
         <div
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={currentValue}
           ref={scrollRef}
+          tabIndex={0}
           onScroll={handleScroll}
-          // 4. If user touches the wheel, they aren't typing anymore
-          onMouseDown={() => setIsTyping(false)}
-          onTouchStart={() => setIsTyping(false)}
-          className="no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-2 overflow-x-auto scroll-smooth px-[152px]"
+          onKeyDown={handleKeyDown}
+          role="slider"
+          className="no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-2 overflow-x-auto scroll-smooth px-[152px] focus:rounded-xs focus:ring-4 focus:ring-offset-2 focus:outline-none"
         >
           {range.map((value) => (
             <WheelPickerOption

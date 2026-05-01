@@ -22,7 +22,9 @@ const StepFormContent = ({ currentStep }) => {
         <Label id="bean">On The Grinder</Label>
         <Select id="bean">
           {beanOptions.map((option) => (
-            <option value={option.value}>{option.label}</option>
+            <option value={option.value} key={option.value}>
+              {option.label}
+            </option>
           ))}
         </Select>
         <span className="mt-auto">

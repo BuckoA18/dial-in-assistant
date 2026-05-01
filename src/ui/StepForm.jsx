@@ -19,6 +19,11 @@ const STEPS = [
 const StepForm = ({ onSubmit }) => {
   const [currentStep, setCurrentStep] = useState(1);
 
+  const handleChangeStep = (step) => {
+    console.log(step);
+    setCurrentStep(step);
+  };
+
   return (
     <form
       className="flex h-full flex-col gap-2 px-2"
@@ -35,6 +40,7 @@ const StepForm = ({ onSubmit }) => {
             icon={step.icon}
             key={step.step}
             isFirst={step.step === 1}
+            onChangeStep={handleChangeStep}
           />
         ))}
         <BackButton>

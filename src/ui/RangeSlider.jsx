@@ -1,23 +1,18 @@
-import { Slider } from "radix-ui";
+import React from "react";
 
-const RangeSlider = ({ setValue, value }) => {
-  console.log("Range Slider Value: ", value);
+const RangeSlider = ({ min, max, value, setValue }) => {
   return (
-    <Slider.Root
-      orientation="vertical"
-      className="relative flex h-98 touch-none items-center select-none data-[orientation=vertical]:flex-col"
-      max={100}
-      step={1}
-      onChange={(e) => setValue(e.target.value)}
-    >
-      <Slider.Track className="relative grow rounded-full bg-stone-400 data-[orientation=vertical]:w-2">
-        {/* <Slider.Range className="absolute h-6 bg-amber-700 data-[orientation=vertical]:w-6" /> */}
-      </Slider.Track>
-      <Slider.Thumb
-        className="block size-8 rounded-full bg-gray-200"
-        aria-label="Taste"
+    <div className="relative h-full w-2 rounded-2xl bg-stone-200">
+      <input
+        type="range"
+        className="h-full w-2 rotate-180 cursor-pointer appearance-none rounded-lg bg-gray-200 [writing-mode:vertical-rl] [&::-webkit-slider-thumb]:h-8 [&::-webkit-slider-thumb]:w-8 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-stone-800"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+        orient="vertical"
       />
-    </Slider.Root>
+    </div>
   );
 };
 

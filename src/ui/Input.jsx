@@ -6,7 +6,7 @@ const Input = ({ type, id, placeholder, value, isDisabled, onChange }) => {
       <input
         type="number"
         id={id}
-        className="w-full rounded-xs border-b-3 border-stone-800 pl-1 text-center text-6xl text-stone-800 transition-colors focus:border-none focus:ring-4 focus:outline-none"
+        className="w-full rounded-full border border-stone-300 px-4 py-2 text-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none"
         value={value}
         disabled={true}
         aria-live="polite"
@@ -16,8 +16,7 @@ const Input = ({ type, id, placeholder, value, isDisabled, onChange }) => {
     <input
       type={type}
       id={id}
-      className="w-full rounded-xs border-b-3 border-stone-800 pl-2 text-6xl text-stone-800 focus:border-none focus:ring-4 focus:outline-none"
-      placeholder={placeholder}
+      className="w-full rounded-full border border-stone-300 px-4 py-2 text-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none"
       value={value}
       onChange={onChange}
       disabled={isDisabled}

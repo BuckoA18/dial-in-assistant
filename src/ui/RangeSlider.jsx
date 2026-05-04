@@ -1,6 +1,6 @@
 import React from "react";
 
-const RangeSlider = ({ min, max, value, setValue }) => {
+const RangeSlider = ({ min, max, value, setValue, currentLabel }) => {
   return (
     <div className="relative h-full w-2 rounded-2xl bg-stone-200">
       <input
@@ -11,6 +11,9 @@ const RangeSlider = ({ min, max, value, setValue }) => {
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
         orient="vertical"
+        aria-valuenow={currentLabel}
+        aria-valuemin={min}
+        aria-valuemax={max}
       />
     </div>
   );

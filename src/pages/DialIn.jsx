@@ -12,9 +12,9 @@ const DialIn = () => {
   };
 
   return (
-    <>
+    <main className="h-dvh">
       <StepForm
-        className="flex h-full flex-col gap-2 px-2"
+        className="flex flex-col gap-2 px-2"
         onSubmit={handleAnalyzeShot}
       />
 
@@ -28,7 +28,7 @@ const DialIn = () => {
           <LinkButton to="/">I am happy</LinkButton>
         </div>
       )}
-    </>
+    </main>
   );
 };
 

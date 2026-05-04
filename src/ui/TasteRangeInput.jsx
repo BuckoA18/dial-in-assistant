@@ -4,22 +4,22 @@ import RangeSlider from "./RangeSlider";
 import { calcRange } from "../utils";
 
 const tasteOptions = [
-  { id: 1, label: "Way too bitter", adjustment: "Grind much coarser" },
-  { id: 2, label: "Very bitter", adjustment: "Grind coarser" },
-  { id: 3, label: "Bitter", adjustment: "Grind slightly coarser" },
-  { id: 4, label: "A bit bitter", adjustment: "Decrease yield / Stop earlier" },
-  { id: 5, label: "Bittersweet", adjustment: "Almost there! Minor tweak" },
-  { id: 6, label: "Perfectly balanced", adjustment: "Don't change a thing" },
-  { id: 7, label: "Sweet & tangy", adjustment: "Great for light roasts" },
-  { id: 8, label: "A bit sour", adjustment: "Increase yield / Run longer" },
-  { id: 9, label: "Sour", adjustment: "Grind finer" },
-  { id: 10, label: "Very sour", adjustment: "Grind much finer" },
+  { id: 0, label: "Way too bitter", adjustment: "Grind much coarser" },
+  { id: 1, label: "Very bitter", adjustment: "Grind coarser" },
+  { id: 2, label: "Bitter", adjustment: "Grind slightly coarser" },
+  { id: 3, label: "A bit bitter", adjustment: "Decrease yield / Stop earlier" },
+  { id: 4, label: "Bittersweet", adjustment: "Almost there! Minor tweak" },
+  { id: 5, label: "Perfectly balanced", adjustment: "Don't change a thing" },
+  { id: 6, label: "Sweet & tangy", adjustment: "Great for light roasts" },
+  { id: 7, label: "A bit sour", adjustment: "Increase yield / Run longer" },
+  { id: 8, label: "Sour", adjustment: "Grind finer" },
+  { id: 9, label: "Very sour", adjustment: "Grind much finer" },
 ];
 
 const TasteRangeInput = () => {
   //Get current value from slider
   const [value, setValue] = useState(5);
-  console.log(value);
+  const currentValueLabel = tasteOptions[value].label;
 
   const handleClick = (id) => {
     setValue(id);
@@ -39,7 +39,13 @@ const TasteRangeInput = () => {
         ))}
       </div>
       <div className="flex h-98 w-20 items-center justify-center">
-        <RangeSlider setValue={setValue} value={value} min={1} max={10} />
+        <RangeSlider
+          setValue={setValue}
+          value={value}
+          currentLabel={currentValueLabel}
+          min={0}
+          max={9}
+        />
       </div>
     </div>
   );

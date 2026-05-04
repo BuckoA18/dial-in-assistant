@@ -12,9 +12,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="dial-in" element={<DialIn />} />
         <Route element={<AppLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="dial-in" element={<DialIn />} />
           <Route path="settings" element={<Settings />} />
           <Route path="beans" element={<Beans />} />
           <Route path="history" element={<History />} />

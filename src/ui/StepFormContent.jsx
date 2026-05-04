@@ -18,24 +18,25 @@ const beanOptions = [
 const StepFormContent = ({ currentStep }) => {
   if (currentStep === 1)
     return (
-      <div className="flex h-full flex-col">
-        <Label id="bean">On The Grinder</Label>
-        <Select id="bean">
-          {beanOptions.map((option) => (
-            <option value={option.value} key={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </Select>
-        <span className="mt-auto">
-          <WheelPicker min={1} max={50} />
-        </span>
+      <div className="flex grow flex-col bg-amber-100 px-2">
+        <div className="flex flex-col sm:flex-row sm:gap-2">
+          <label htmlFor="bean" className="semibold">
+            On The Grinder
+          </label>
+          <Select id="bean">
+            {beanOptions.map((option) => (
+              <option value={option.value} key={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Select>
+        </div>
       </div>
     );
 
   if (currentStep === 2)
     return (
-      <div className="flex h-full flex-col items-center gap-4">
+      <div className="flex h-full flex-col items-center gap-4 px-2">
         <label htmlFor="coffeeIn" className="mr-auto text-sm font-semibold">
           Coffee In (g)
         </label>
@@ -59,12 +60,14 @@ const StepFormContent = ({ currentStep }) => {
           placeholder="28"
           type="number"
         />
+
+        <WheelPicker min={1} max={50} />
       </div>
     );
 
   if (currentStep === 3)
     return (
-      <div className="h-full">
+      <div className="h-full px-2">
         <TasteRangeInput />
       </div>
     );

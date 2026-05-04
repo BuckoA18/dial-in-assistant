@@ -5,7 +5,7 @@ import BackButton from "./BackButton";
 
 const StepCounter = ({ children }) => {
   return (
-    <div className="relative mt-2 mb-4 flex h-18 w-full items-center justify-center">
+    <div className="relative flex min-h-24 w-full flex-col items-center justify-center gap-2 rounded-b-2xl bg-stone-200">
       {children}
     </div>
   );

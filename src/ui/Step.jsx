@@ -28,7 +28,7 @@ const Step = ({ isActive, isLast, onChangeStep, step, isComplete }) => {
           {step}
         </p>
       </span>
-      {!isLast && <p className={`h-1 w-18 rounded-full bg-stone-300`}></p>}
+      {!isLast && <p className={`h-1 w-14 rounded-full bg-stone-300`}></p>}
     </>
   );
 };

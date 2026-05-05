@@ -8,7 +8,7 @@ import Step from "./Step";
 import BackButton from "./BackButton";
 
 const MIN_STEP = 1;
-const MAX_STEP = 3;
+const MAX_STEP = 4;
 
 const STEPS = [
   {
@@ -19,12 +19,18 @@ const STEPS = [
   },
   {
     step: 2,
-    label: "Give us your shot details",
+    label: "Tech details",
     icon: <Cog size={20} />,
     isComplete: false,
   },
   {
     step: 3,
+    label: "Give us your shot details",
+    icon: <Star size={20} />,
+    isComplete: false,
+  },
+  {
+    step: 4,
     label: "How was it?",
     icon: <Star size={20} />,
     isComplete: false,
@@ -54,7 +60,7 @@ const StepForm = ({ onSubmit }) => {
               step={step.step}
               isActive={currentStep === step.step}
               key={step.step}
-              isLast={step.step === 3}
+              isLast={step.step === 4}
               onChangeStep={handleChangeStep}
               label={step.label}
               isComplete={step.isComplete}
@@ -67,7 +73,7 @@ const StepForm = ({ onSubmit }) => {
       </StepCounter>
 
       <StepFormContent currentStep={currentStep} />
-      <div className="mt-auto mb-2 flex items-center sm:mb-26">
+      <div className="mt-auto mb-2 flex items-center px-2 sm:mb-26">
         {currentStep !== MAX_STEP ? (
           <Button
             onClick={(e) => {

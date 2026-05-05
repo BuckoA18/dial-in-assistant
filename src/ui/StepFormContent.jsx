@@ -9,6 +9,59 @@ import CustomSingleValue from "./CustomSingleValue";
 import TasteRangeInput from "./TasteRangeInput";
 import Label from "./Label";
 import CoffeeProfile from "./CoffeeProfile";
+import GrinderHistory from "./GrinderHistory";
+
+const historyData = [
+  {
+    id: 1,
+    setting: 18,
+    date: "May 5, 2026",
+    note: "Perfect balance, very sweet finish.",
+  },
+
+  {
+    id: 2,
+    setting: 20,
+    date: "May 4, 2026",
+    note: "A bit watery, need to go bit finer.",
+  },
+  {
+    id: 3,
+    setting: 25,
+    date: "May 3, 2026",
+    note: "Really watery and acidic, need to go a lot finer",
+  },
+  // {
+  //   id: 3,
+  //   setting: 25,
+  //   date: "May 3, 2026",
+  //   note: "Really watery and acidic, need to go a lot finer",
+  // },
+  // {
+  //   id: 3,
+  //   setting: 25,
+  //   date: "May 3, 2026",
+  //   note: "Really watery and acidic, need to go a lot finer",
+  // },
+  // {
+  //   id: 3,
+  //   setting: 25,
+  //   date: "May 3, 2026",
+  //   note: "Really watery and acidic, need to go a lot finer",
+  // },
+  // {
+  //   id: 3,
+  //   setting: 25,
+  //   date: "May 3, 2026",
+  //   note: "Really watery and acidic, need to go a lot finer",
+  // },
+  // {
+  //   id: 3,
+  //   setting: 25,
+  //   date: "May 3, 2026",
+  //   note: "Really watery and acidic, need to go a lot finer",
+  // },
+];
 
 const testCoffee = {
   name: "Brasil Santos",
@@ -54,36 +107,11 @@ const StepFormContent = ({ currentStep }) => {
     );
   if (currentStep === 2)
     return (
-      <div className="flex w-full grow flex-col px-2">
-        <span className="flex w-full flex-col">
-          <label
-            htmlFor="temperature"
-            className="mb-1 ml-1 block text-sm font-semibold text-stone-800"
-          >
-            Weter temperature{" "}
-          </label>
-          <span className="flex w-full justify-between rounded-full border border-stone-300 px-2 shadow-sm focus-within:ring-2 focus-within:ring-orange-600 focus-within:ring-offset-2 focus-within:outline-none">
-            <input
-              type="number"
-              id="temperature"
-              className="min-w-48 px-4 py-2 focus:outline-none"
-            />
-            <select className="focus:outline-none">
-              <option value="celsius">Celsius</option>
-              <option value="ferenheit">Ferenheit</option>
-            </select>
-          </span>
-        </span>
-        <span></span>
-        <span className="mt-auto">
-          <label className="mb-1 ml-1 text-sm font-semibold text-stone-800">
-            Grind Setting
-          </label>
-          <WheelPicker min={1} max={50} />
-        </span>
+      <div className="flex grow flex-col items-center justify-between px-2">
+        <GrinderHistory history={historyData} />
+        <WheelPicker min={1} max={50} />
       </div>
     );
-
   if (currentStep === 3)
     return (
       <div className="flex grow flex-col items-center gap-8 px-2">

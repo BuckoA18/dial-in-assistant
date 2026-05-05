@@ -1,4 +1,7 @@
+import { Maximize2 } from "lucide-react";
 import RoastProfile from "./RoastProfile";
+import Grid from "./Grid";
+import Detail from "./Detail";
 
 const CoffeeProfile = ({ coffee }) => {
   console.log(coffee);
@@ -16,7 +19,9 @@ const CoffeeProfile = ({ coffee }) => {
   } = coffee || {};
 
   return (
-    <div className="flex max-w-md flex-col gap-6 rounded-xl border bg-white p-4 shadow-sm">
+    <div
+      className={`relative flex max-w-md flex-col gap-6 rounded-xl border p-4 shadow-sm`}
+    >
       <div>
         <div className="flex items-center gap-3">
           {countryCode && (
@@ -33,12 +38,12 @@ const CoffeeProfile = ({ coffee }) => {
 
       <RoastProfile roastLevel={roastLevel} />
 
-      <div className="grid grid-cols-2 gap-y-2 border-y border-stone-100 py-4 text-sm">
+      <Grid type="details">
         <Detail label="Origin" value={origin} />
         <Detail label="Method" value={method} />
         <Detail label="Altitude" value={`${altitude} m.a.s.l.`} />
         <Detail label="Variety" value={variety} />
-      </div>
+      </Grid>
 
       {notes.length > 0 && (
         <div>
@@ -65,14 +70,5 @@ const Note = ({ label }) => {
     </span>
   );
 };
-
-const Detail = ({ label, value }) => (
-  <div className="flex flex-col">
-    <span className="text-[10px] font-bold text-stone-400 uppercase">
-      {label}
-    </span>
-    <span className="font-medium text-stone-700">{value}</span>
-  </div>
-);
 
 export default CoffeeProfile;

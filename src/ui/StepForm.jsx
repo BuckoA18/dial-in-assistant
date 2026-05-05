@@ -19,7 +19,7 @@ const STEPS = [
   },
   {
     step: 2,
-    label: "Tech details",
+    label: "Set your Grinder",
     icon: <Cog size={20} />,
     isComplete: false,
   },

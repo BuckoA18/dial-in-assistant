@@ -1,7 +1,13 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const Grid = ({ children }) => {
+const Grid = ({ children, type }) => {
+  if (type === "details")
+    return (
+      <div className="grid grid-cols-2 gap-y-2 border-y border-stone-100 py-4 text-sm">
+        {children}
+      </div>
+    );
   return (
     <div
       className={twMerge(

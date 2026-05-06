@@ -1,6 +1,8 @@
 import React from "react";
 
-const Input = ({ type, id, value, isDisabled, onChange }) => {
+import Label from "./Label";
+
+const Input = ({ type, value, isDisabled, onChange, placeholder, id }) => {
   if (type === "grinder")
     return (
       <input
@@ -10,6 +12,18 @@ const Input = ({ type, id, value, isDisabled, onChange }) => {
         value={value}
         disabled={true}
         aria-live="polite"
+      />
+    );
+  if (type === "shot")
+    return (
+      <input
+        placeholder={placeholder}
+        type="number"
+        id={id}
+        className="h-12 w-full rounded-full border-2 border-stone-400 px-6 text-lg font-bold shadow-xs transition-all focus:border-orange-400 focus:ring-4 focus:ring-orange-400 focus:outline-none"
+        value={value}
+        onChange={onChange}
+        disabled={isDisabled}
       />
     );
   return (

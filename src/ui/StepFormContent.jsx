@@ -10,6 +10,7 @@ import TasteRangeInput from "./TasteRangeInput";
 import Label from "./Label";
 import CoffeeProfile from "./CoffeeProfile";
 import GrinderHistory from "./GrinderHistory";
+import FloatingInput from "./FloatingInput";
 
 const historyData = [
   {
@@ -84,45 +85,10 @@ const StepFormContent = ({ currentStep }) => {
     );
   if (currentStep === 3)
     return (
-      <div className="flex grow flex-col items-center gap-8 px-2">
-        <span>
-          <label
-            htmlFor="coffeeIn"
-            className="mb-1 ml-1 text-sm font-semibold text-stone-800"
-          >
-            Coffee In (g)
-          </label>
-          <Input id="coffeeIn" placeholder="18" type="number" />
-        </span>
-        <span>
-          <label
-            htmlFor="coffeeIn"
-            className="text-sm font-semibold text-stone-800"
-          >
-            Coffee Out (g)
-          </label>
-          <Input
-            label="Coffee out (g)"
-            id="coffeeOut"
-            placeholder="38.4"
-            type="number"
-          />
-        </span>
-        <span>
-          <label
-            htmlFor="coffeeIn"
-            className="text-sm font-semibold text-stone-800"
-          >
-            Extraction Time (s)
-          </label>
-
-          <Input
-            label="Time of extraction (s)"
-            id="extractionTime"
-            placeholder="28"
-            type="number"
-          />
-        </span>
+      <div className="flex grow flex-col gap-4 px-2">
+        <FloatingInput label="Coffee In" prevValue={45} unit="g" />
+        <FloatingInput label="Coffee Out" prevValue={26} unit="g" />
+        <FloatingInput label="Extraction Time" prevValue={38} unit="s" />
       </div>
     );
 

@@ -1,10 +1,10 @@
 import React from "react";
 
-const Label = ({ children, id }) => {
+const Label = ({ children, forId }) => {
   return (
     <label
-      className="mr-auto mb-2 text-sm font-semibold text-stone-800"
-      htmlFor={id}
+      className="mb-1 ml-2 text-sm font-semibold text-stone-400"
+      htmlFor={forId}
     >
       {children}
     </label>

@@ -32,10 +32,10 @@ const WheelPicker = ({ min, max, step = 1, lastClickValue = 25 }) => {
   };
 
   return (
-    <div className="mt-2 flex flex-col items-center">
+    <div className="mt-2 flex flex-col items-center mask-x-from-72">
       <span className="text-4xl font-bold tracking-wide">{currentValue}</span>
       <div className="relative flex w-76 items-center">
-        <div className="pointer-events-none absolute left-1/2 z-10 h-20 w-12 -translate-x-1/2 rounded-sm border-3 border-stone-600 bg-transparent shadow-sm focus:ring-orange-600"></div>
+        <div className="pointer-events-none absolute left-1/2 z-10 h-20 w-12 -translate-x-1/2 rounded-sm border-3 border-stone-600 bg-transparent shadow-sm"></div>
         <div
           aria-valuemin={min}
           aria-valuemax={max}
@@ -44,7 +44,7 @@ const WheelPicker = ({ min, max, step = 1, lastClickValue = 25 }) => {
           tabIndex={0}
           onScroll={handleScroll}
           role="slider"
-          className="no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-2 overflow-x-auto scroll-smooth px-[151px] focus:rounded-xs focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:outline-none"
+          className="no-scrollbar flex h-28 w-full snap-x snap-mandatory items-center gap-2 overflow-x-auto scroll-smooth px-[151px] focus:rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
           {range.map((value) => (
             <WheelPickerOption

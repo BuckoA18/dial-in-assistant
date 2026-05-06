@@ -31,36 +31,6 @@ const historyData = [
     date: "May 3, 2026",
     note: "Really watery and acidic, need to go a lot finer",
   },
-  // {
-  //   id: 3,
-  //   setting: 25,
-  //   date: "May 3, 2026",
-  //   note: "Really watery and acidic, need to go a lot finer",
-  // },
-  // {
-  //   id: 3,
-  //   setting: 25,
-  //   date: "May 3, 2026",
-  //   note: "Really watery and acidic, need to go a lot finer",
-  // },
-  // {
-  //   id: 3,
-  //   setting: 25,
-  //   date: "May 3, 2026",
-  //   note: "Really watery and acidic, need to go a lot finer",
-  // },
-  // {
-  //   id: 3,
-  //   setting: 25,
-  //   date: "May 3, 2026",
-  //   note: "Really watery and acidic, need to go a lot finer",
-  // },
-  // {
-  //   id: 3,
-  //   setting: 25,
-  //   date: "May 3, 2026",
-  //   note: "Really watery and acidic, need to go a lot finer",
-  // },
 ];
 
 const testCoffee = {

@@ -33,7 +33,7 @@ const GrinderHistory = ({ history = {} }) => {
   };
   return (
     <div
-      className={`no-scrollbar relative flex max-h-62 w-full max-w-md flex-col gap-4 ${isHistoryOpen ? "overflow-scroll" : "overflow-hidden"} rounded-2xl bg-white px-4 py-2`}
+      className={`no-scrollbar relative flex max-h-62 w-full max-w-md flex-col gap-4 ${isHistoryOpen ? "overflow-scroll mask-b-from-50" : "overflow-hidden "} rounded-2xl bg-white px-4 py-2`}
     >
       <div className="flex flex-col gap-2">
         {displayList.length > 0 ? (

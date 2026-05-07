@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { MoveRight } from "lucide-react";
+import { toCamelCase } from "../utils";
 import Input from "./Input";
 import Label from "./Label";
-import { toCamelCase } from "../utils";
 
-const FloatingInput = ({ label, prevValue, unit = "N/A" }) => {
-  const [value, setValue] = useState("");
+const FloatingInput = ({ label, prevValue, unit = "N/A", onChange, value }) => {
   const difference = value ? (parseFloat(value) - prevValue).toFixed(1) : null;
 
   return (
@@ -27,7 +26,7 @@ const FloatingInput = ({ label, prevValue, unit = "N/A" }) => {
         id={toCamelCase(label)}
         type="shot"
         placeholder={prevValue}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChange}
       />
     </div>
   );

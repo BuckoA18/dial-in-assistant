@@ -11,6 +11,8 @@ import Label from "./Label";
 import CoffeeProfile from "./CoffeeProfile";
 import GrinderHistory from "./GrinderHistory";
 import FloatingInput from "./FloatingInput";
+import YieldVisualizer from "./YieldVisualizer";
+import ShotDetails from "./ShotDetails";
 
 const historyData = [
   {
@@ -86,9 +88,7 @@ const StepFormContent = ({ currentStep }) => {
   if (currentStep === 3)
     return (
       <div className="flex grow flex-col gap-4 px-2">
-        <FloatingInput label="Coffee In" prevValue={45} unit="g" />
-        <FloatingInput label="Coffee Out" prevValue={26} unit="g" />
-        <FloatingInput label="Extraction Time" prevValue={38} unit="s" />
+        <ShotDetails />
       </div>
     );
 

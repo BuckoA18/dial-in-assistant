@@ -14,3 +14,11 @@ export const toCamelCase = (string) => {
 
   return camelCaseString;
 };
+
+export const calcYield = (dose, output) => {
+  return Number(
+    output % dose !== 0
+      ? (output / dose).toFixed(1)
+      : (output / dose).toFixed(0),
+  );
+};

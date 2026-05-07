@@ -13,6 +13,7 @@ import GrinderHistory from "./GrinderHistory";
 import FloatingInput from "./FloatingInput";
 import YieldVisualizer from "./YieldVisualizer";
 import ShotDetails from "./ShotDetails";
+import CoffeeSelect from "./CoffeeSelect";
 
 const historyData = [
   {
@@ -34,67 +35,38 @@ const historyData = [
     date: "May 3, 2026",
     note: "Really watery and acidic, need to go a lot finer",
   },
-];
-
-const testCoffee = {
-  name: "Brasil Santos",
-  roaster: "Caffee Montana",
-  origin: "Brasil",
-  countryCode: "BR",
-  method: "Washed",
-  roastLevel: 4,
-  altitude: "1600",
-  variety: "N/A",
-  notes: ["Dark chocolate", "Almods", "Hazelnuts"],
-  intensity: { acidity: 3, body: 4, sweetness: 2 },
-};
-
-const beanOptions = [
-  { label: "Brasil", value: "brasil", countryCode: "BR" },
-  { label: "Ethiopie", value: "ethiopie", countryCode: "ET" },
-  { label: "India", value: "india", countryCode: "IN" },
+  {
+    id: 4,
+    setting: 25,
+    date: "May 3, 2026",
+    note: "Really watery and acidic, need to go a lot finer",
+  },
 ];
 
 const StepFormContent = ({ currentStep }) => {
   if (currentStep === 1)
     return (
-      <div className="flex grow flex-col gap-4 px-2">
-        <span>
-          <label
-            htmlFor="bean"
-            className="mb-1 ml-1 block text-sm font-semibold text-stone-800"
-          >
-            On the grinder
-          </label>
-          <Select id="bean">
-            {beanOptions.map((option) => (
-              <option value={option.value} key={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </Select>
-        </span>
-
-        <CoffeeProfile coffee={testCoffee} />
+      <div className="flex grow flex-col items-center gap-2 px-2">
+        <CoffeeSelect />
       </div>
     );
   if (currentStep === 2)
     return (
-      <div className="flex grow flex-col items-center justify-between px-2">
+      <div className="animate-in fade-in flex grow flex-col items-center justify-between px-2">
         <GrinderHistory history={historyData} />
         <WheelPicker min={1} max={50} />
       </div>
     );
   if (currentStep === 3)
     return (
-      <div className="flex grow flex-col gap-4 px-2">
+      <div className="animate-in fade-in flex grow flex-col gap-4 px-2">
         <ShotDetails />
       </div>
     );
 
   if (currentStep === 4)
     return (
-      <div className="h-full px-2">
+      <div className="animate-in fade-in h-full px-2">
         <TasteRangeInput />
       </div>
     );

@@ -6,19 +6,19 @@ import { calcRange } from "../utils";
 
 const rateRange = calcRange(1, 5, 1);
 
-const RoastProfile = ({ roastLevel = 3 }) => {
+const CoffeeDetail = ({ roastLevel = 3 }) => {
   return (
     <div className="flex gap-2">
       {rateRange.map((value) => (
         <Icon
           iconNode={coffeeBean}
           key={value}
-          size={22}
-          className={`${value <= roastLevel ? "text-amber-800" : "text-stone-200"}`}
+          size={20}
+          className={`${value <= roastLevel ? "text-orange-900" : "text-stone-200"}`}
         />
       ))}
     </div>
   );
 };
 
-export default RoastProfile;
+export default CoffeeDetail;

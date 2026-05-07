@@ -8,7 +8,7 @@ const FloatingInput = ({ label, prevValue, unit = "N/A", onChange, value }) => {
   const difference = value ? (parseFloat(value) - prevValue).toFixed(1) : null;
 
   return (
-    <div className="flex flex-col">
+    <div className="animate-in fade-in flex flex-col">
       <div className="flex justify-between">
         <Label forId={toCamelCase(label)}>
           {label} ({unit})

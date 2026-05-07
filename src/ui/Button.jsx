@@ -1,15 +1,31 @@
 import React from "react";
 
-const Button = ({ children, onClick, disabled, type }) => {
-  if (type === "action")
+const Button = ({ children, onClick, disabled, type = "primary", styles }) => {
+  const baseStyles =
+    "text-md flex w-full items-center justify-center rounded-xl border-2  px-6 py-3 text-lg font-bold  shadow-sm transition-all focus:ring-4 focus:outline-none active:scale-95 sm:w-40";
+  if (type === "secondary")
     return (
-      <button className="rounded-full border-2 px-2 py-2 text-stone-800">
+      <button
+        className={`border-stone-400 px-6 py-3 text-lg font-bold text-stone-800 shadow-sm focus:ring-stone-400 ${baseStyles} ${styles}`}
+      >
         {children}
       </button>
     );
+
+  if (type === "icon")
+    return (
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className={`rounded-full border-2 border-transparent px-2 py-1 text-stone-400 transition-all focus:outline-none active:scale-95 active:bg-stone-200 active:text-stone-800 ${styles}`}
+      >
+        {children}
+      </button>
+    );
+
   return (
     <button
-      className="text-md flex w-full items-center justify-center rounded-full border-2 border-orange-400 bg-orange-300 px-6 py-3 text-lg font-bold text-stone-800 shadow-md transition-all focus:ring-4 focus:ring-orange-400 focus:outline-none active:scale-95"
+      className={`border-orange-400 bg-orange-300 px-6 py-3 text-lg font-bold text-stone-800 shadow-sm focus:ring-orange-400 ${baseStyles} ${styles}`}
       onClick={onClick}
       disabled={disabled}
     >

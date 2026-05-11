@@ -23,7 +23,6 @@ const WheelPicker = ({ min, max, step = 1, lastClickValue = 25 }) => {
   const handleScroll = (e) => {
     const container = e.target;
     const scrollLeft = container.scrollLeft;
-    console.log(scrollLeft);
     const index = Math.round(scrollLeft / optionWidth) + min;
 
     if (index !== currentValue && index >= min && index <= max) {

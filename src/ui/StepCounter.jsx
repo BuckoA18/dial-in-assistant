@@ -6,7 +6,7 @@ import Button from "./Button";
 const STEPS = [
   {
     step: 1,
-    label: "What are we Dialing In?",
+    label: "On the grinder",
     icon: <Coffee size={20} />,
     isComplete: false,
   },

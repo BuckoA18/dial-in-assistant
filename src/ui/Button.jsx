@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ children, onClick, disabled, type = "primary", styles }) => {
   const baseStyles =
-    "text-md flex w-full items-center justify-center rounded-xl border-2  px-6 py-3 text-lg font-bold  shadow-sm transition-all focus:ring-4 focus:outline-none active:scale-95 sm:w-40";
+    "text-base flexitems-center w-full justify-center rounded-xl border-2  px-6 py-3 text-lg font-bold shadow-sm transition-all focus:ring-4 focus:outline-none active:scale-95 sm:w-40";
   if (type === "secondary")
     return (
       <button

@@ -1,0 +1,29 @@
+import React from "react";
+import Button from "./Button";
+import { ChevronDown } from "lucide-react";
+
+const CardOption = ({
+  children,
+  onClick,
+  isSelected,
+  onToggleOpen,
+  isOpen,
+}) => {
+  return (
+    <div
+      className={`animate-in fade-in relative flex flex-col rounded-xl border-2 p-4 shadow-sm transition-colors ${isSelected ? "border-orange-300 bg-orange-200" : "border-stone-200 "} ${isOpen && "grow gap-6"}`}
+      onClick={onClick}
+    >
+      {children}
+      <Button
+        onClick={onToggleOpen}
+        type="icon"
+        styles={`absolute bottom-0 right-0 transition-rotate ${isOpen ? "rotate-180" : ""}`}
+      >
+        {<ChevronDown size={20} />}
+      </Button>
+    </div>
+  );
+};
+
+export default CardOption;

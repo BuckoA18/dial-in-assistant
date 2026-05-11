@@ -29,7 +29,7 @@ const StepForm = ({ onSubmit }) => {
       <StepCounter currentStep={currentStep} onChangeStep={handleChangeStep} />
 
       <StepFormContent currentStep={currentStep} />
-      <div className="mt-auto mb-2 flex items-center gap-2 px-2 sm:ml-auto">
+      <div className="w-full px-2 pb-2">
         {currentStep <= MAX_STEP ? (
           <>
             <Button
@@ -48,6 +48,7 @@ const StepForm = ({ onSubmit }) => {
                 e.preventDefault();
                 handleChangeStep(currentStep + 1);
               }}
+              styles=""
             >
               Next
             </Button>

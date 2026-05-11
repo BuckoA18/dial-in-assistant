@@ -6,6 +6,8 @@ const Button = ({ children, onClick, disabled, type = "primary", styles }) => {
   if (type === "secondary")
     return (
       <button
+        onClick={onClick}
+        disabled={disabled}
         className={`border-stone-400 px-6 py-3 text-lg font-bold text-stone-800 shadow-sm focus:ring-stone-400 ${baseStyles} ${styles}`}
       >
         {children}

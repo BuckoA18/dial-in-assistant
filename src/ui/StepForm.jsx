@@ -20,7 +20,7 @@ const StepForm = ({ onSubmit }) => {
 
   return (
     <form
-      className="flex h-full flex-col gap-2"
+      className="flex h-full flex-col gap-2 sm:items-center"
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit();
@@ -29,10 +29,17 @@ const StepForm = ({ onSubmit }) => {
       <StepCounter currentStep={currentStep} onChangeStep={handleChangeStep} />
 
       <StepFormContent currentStep={currentStep} />
-      <div className="mt-auto mb-2 flex items-center gap-2 px-2 sm:mb-4 sm:ml-auto">
-        {currentStep !== MAX_STEP ? (
+      <div className="mt-auto mb-2 flex items-center gap-2 px-2 sm:ml-auto">
+        {currentStep <= MAX_STEP ? (
           <>
-            <Button type="secondary" styles="hidden sm:block">
+            <Button
+              type="secondary"
+              styles="hidden sm:block"
+              onClick={(e) => {
+                e.preventDefault();
+                handleChangeStep(currentStep - 1);
+              }}
+            >
               Back
             </Button>
             <Button

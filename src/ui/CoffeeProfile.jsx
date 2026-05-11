@@ -4,10 +4,9 @@ import Grid from "./Grid";
 import Detail from "./Detail";
 import Badge from "./Badge";
 
-const CoffeeProfile = ({ coffee }) => {
-  console.log(coffee);
-
+const CoffeeProfile = ({ data, onSelect }) => {
   const {
+    id,
     name = "Unknown",
     roaster = "",
     origin = "Unknown",
@@ -17,11 +16,12 @@ const CoffeeProfile = ({ coffee }) => {
     altitude = "N/A",
     variety = "N/A",
     notes = [],
-  } = coffee || {};
+  } = data || {};
 
   return (
     <div
       className={`animate-in fade-in relative flex max-w-md grow flex-col gap-6 rounded-xl border-2 border-stone-200 p-4 shadow-sm`}
+      onClick={() => onSelect(id)}
     >
       <CoffeeProfileHeading
         countryCode={countryCode}

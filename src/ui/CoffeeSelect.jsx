@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "./Select";
 import Label from "./Label";
 import CoffeeProfile from "./CoffeeProfile";
@@ -23,10 +23,12 @@ const beanOptions = [
 ];
 
 const CoffeeSelect = () => {
+  const [selectedCoffee, setSelectedCoffee] = useState(beanOptions[0]);
+
   return (
     <>
-      <span className="sm:flex">
-        <Label forId="bean">On the grinder</Label>
+      <span className="flex w-full flex-col sm:flex-row">
+        {/* <Label forId="bean">On the grinder</Label> */}
         <Select id="bean">
           {beanOptions.map((option) => (
             <option value={option.value} key={option.value}>

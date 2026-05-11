@@ -32,7 +32,7 @@ const STEPS = [
 
 const StepCounter = ({ currentStep, onChangeStep }) => {
   return (
-    <div className="relative mb-8 flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs">
+    <div className="relative flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs">
       <div className="flex w-full items-center justify-around gap-1 sm:max-w-98">
         {STEPS.map((step) => (
           <Step

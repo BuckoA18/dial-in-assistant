@@ -6,13 +6,7 @@ import Badge from "./Badge";
 import Button from "./Button";
 import CardOption from "./CardOption";
 
-const CoffeeProfile = ({
-  data,
-  isSelected,
-  onSelect,
-  onToggleOpen,
-  isOpen,
-}) => {
+const CoffeeProfile = ({ data, isSelected }) => {
   const {
     id,
     name = "Unknown",
@@ -27,28 +21,15 @@ const CoffeeProfile = ({
   } = data || {};
 
   return (
-    <CardOption
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onSelect(id);
-      }}
-      onToggleOpen={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onToggleOpen(id);
-      }}
-      isOpen={isOpen}
-      isSelected={isSelected}
-    >
+    <>
       <CoffeeProfileHeading
         countryCode={countryCode}
         roaster={roaster}
         name={name}
       />
 
-      {isOpen && (
-        <>
+      {isSelected && (
+        <div>
           <CoffeeDetail roastLevel={roastLevel} />
 
           <Grid type="details">
@@ -75,9 +56,9 @@ const CoffeeProfile = ({
               </div>
             </div>
           )}
-        </>
+        </div>
       )}
-    </CardOption>
+    </>
   );
 };
 

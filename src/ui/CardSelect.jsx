@@ -11,51 +11,57 @@ import Detail from "./Detail";
 import Grid from "./Grid";
 import Button from "./Button";
 import Badge from "./Badge";
+import CardOption from "./CardOption";
 
-const CardSelect = ({ options, optionComponent: OptionComponent, styles }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [openedOption, setOpenedOption] = useState(null);
-  const isOptionOpen = openedOption !== null;
+const CardSelect = ({
+  options,
+  optionComponent: OptionComponent,
+  defaultValue,
+  styles,
+}) => {
+  const [selectedOption, setSelectedOption] = useState(defaultValue);
 
   console.log("Selected option: ", selectedOption);
 
   const handleSelectOption = (id) => {
-    setSelectedOption(
-      selectedOption?.id === id
-        ? null
-        : options.find((option) => option.id === id),
-    );
+    if (selectedOption?.id === id) return;
+    setSelectedOption(options.find((option) => option.id === id));
   };
-  const handleToggleOption = (id) => {
-    setOpenedOption(
-      openedOption?.id === id
-        ? null
-        : options.find((option) => option.id === id),
-    );
+  const handleCloseOption = () => {
+    setSelectedOption(null);
   };
 
   return (
     <div
       className={`animate-in fade-in no-scrollbar relative flex w-full grow flex-col gap-2 overflow-auto ${styles}`}
     >
-      {isOptionOpen ? (
-        <OptionComponent
-          data={openedOption}
-          onSelect={handleSelectOption}
-          isSelected={selectedOption?.id === openedOption.id}
-          isOpen={isOptionOpen}
-          key={openedOption.id}
-          onToggleOpen={handleToggleOption}
-        />
+      {selectedOption ? (
+        <CardOption
+          onSelect={(e) => {
+            e.preventDefault();
+            handleSelectOption(selectedOption.id);
+          }}
+          isSelected={selectedOption?.id === selectedOption.id}
+          onClose={handleCloseOption}
+        >
+          <OptionComponent
+            data={selectedOption}
+            isSelected={true}
+            onClose={handleCloseOption}
+          />
+        </CardOption>
       ) : (
         options.map((option) => (
-          <OptionComponent
-            data={option}
-            onToggleOpen={handleToggleOption}
-            onSelect={handleSelectOption}
-            isSelected={selectedOption?.id === option.id}
+          <CardOption
             key={option.id}
-          />
+            onSelect={(e) => {
+              e.preventDefault();
+              handleSelectOption(option.id);
+            }}
+            isSelected={selectedOption?.id === option.id}
+          >
+            <OptionComponent data={option} />
+          </CardOption>
         ))
       )}
     </div>

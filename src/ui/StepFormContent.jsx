@@ -191,9 +191,11 @@ const StepFormContent = ({ currentStep }) => {
     return (
       <div className="flex grow items-center px-2 py-4">
         <CardSelect
+          key="coffee-selection"
           options={coffeeInventory}
           optionComponent={CoffeeProfile}
           styles="max-h-100"
+          defaultValue={coffeeInventory[0]}
         />
       </div>
     );
@@ -201,9 +203,11 @@ const StepFormContent = ({ currentStep }) => {
     return (
       <div className="animate-in fade-in flex grow flex-col items-center justify-between px-2">
         <CardSelect
+          key="grind-selection"
           options={grindHistory}
           optionComponent={GrindProfile}
           styles="max-h-72"
+          defaultValue={grindHistory[1]}
         />
         <WheelPicker min={1} max={50} />
       </div>

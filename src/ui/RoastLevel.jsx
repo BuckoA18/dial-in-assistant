@@ -6,7 +6,7 @@ import { calcRange } from "../utils";
 
 const rateRange = calcRange(1, 5, 1);
 
-const CoffeeDetail = ({ roastLevel = 3 }) => {
+const RoastLevel = ({ roastLevel = 3 }) => {
   return (
     <div className="flex gap-2">
       {rateRange.map((value) => (
@@ -21,4 +21,4 @@ const CoffeeDetail = ({ roastLevel = 3 }) => {
   );
 };
 
-export default CoffeeDetail;
+export default RoastLevel;

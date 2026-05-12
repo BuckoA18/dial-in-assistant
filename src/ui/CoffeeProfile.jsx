@@ -1,5 +1,5 @@
 import { ArrowDown, ChevronDown, Maximize2 } from "lucide-react";
-import CoffeeDetail from "./CoffeeDetail";
+import RoastLevel from "./RoastLevel";
 import Grid from "./Grid";
 import Detail from "./Detail";
 import Badge from "./Badge";
@@ -21,7 +21,7 @@ const CoffeeProfile = ({ data, isSelected }) => {
   } = data || {};
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <CoffeeProfileHeading
         countryCode={countryCode}
         roaster={roaster}
@@ -29,8 +29,8 @@ const CoffeeProfile = ({ data, isSelected }) => {
       />
 
       {isSelected && (
-        <div>
-          <CoffeeDetail roastLevel={roastLevel} />
+        <div className="flex flex-col gap-4">
+          <RoastLevel roastLevel={roastLevel} />
 
           <Grid type="details">
             <Detail label="Origin" value={origin} />
@@ -58,7 +58,7 @@ const CoffeeProfile = ({ data, isSelected }) => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
@@ -67,7 +67,7 @@ export default CoffeeProfile;
 const CoffeeProfileHeading = ({ countryCode, roaster, name }) => {
   return (
     <div className="relative">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {countryCode && <CountryFlag countryCode={countryCode} />}
         <h2 className="text-2xl font-bold text-stone-800">{name}</h2>
       </div>

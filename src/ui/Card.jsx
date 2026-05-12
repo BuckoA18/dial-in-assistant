@@ -1,10 +1,10 @@
 import { Fullscreen } from "lucide-react";
 import React from "react";
 
-const Card = ({ children }) => {
+const Card = ({ children, styles }) => {
   return (
     <div
-      className={`h-full w-full rounded-md border border-gray-200 p-2 text-stone-900 shadow-xs`}
+      className={`animate-in slide-in-from-top-5 relative rounded-xl border-2 border-stone-200 p-4 shadow-sm transition-colors ${styles}`}
     >
       {children}
     </div>

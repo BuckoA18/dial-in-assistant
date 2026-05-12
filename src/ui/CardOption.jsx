@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 const CardOption = ({ children, onSelect, isSelected, onClose }) => {
   return (
     <div
-      className={`animate-in fade-in relative flex flex-col rounded-xl border-2 p-4 shadow-sm transition-colors ${isSelected ? " gap-2 border-orange-400" : "border-stone-200"} `}
+      className={`animate-in slide-in-from-top-5 relative rounded-xl border-2 border-stone-200 p-4 shadow-sm transition-colors`}
       onClick={onSelect}
     >
       {children}

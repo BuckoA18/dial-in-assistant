@@ -32,8 +32,8 @@ const STEPS = [
 
 const StepCounter = ({ currentStep, onChangeStep }) => {
   return (
-    <div className="relative flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs">
-      <div className="flex w-full items-center justify-around gap-1 sm:max-w-98">
+    <div className="relative flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs sm:gap-4">
+      <div className="flex w-full items-center justify-around gap-1 sm:max-w-98 sm:gap-2">
         {STEPS.map((step) => (
           <Step
             step={step.step}
@@ -64,7 +64,9 @@ const StepCounter = ({ currentStep, onChangeStep }) => {
 
 const StepLabel = ({ children }) => {
   return (
-    <h2 className="my-2 text-lg font-semibold text-stone-800">{children}</h2>
+    <h2 className="my-2 text-lg font-bold text-stone-800 sm:text-2xl">
+      {children}
+    </h2>
   );
 };
 

@@ -44,7 +44,7 @@ const CoffeeProfile = ({ data, isSelected }) => {
               <p className="mb-2 text-xs font-bold tracking-wider text-stone-400 uppercase">
                 Tasting Notes
               </p>
-              <div className="gap-1.2 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:max-w-80 sm:gap-2">
                 {notes.map((note) => (
                   <Badge
                     styles="border-orange-200 bg-orange-100 text-stone-800"

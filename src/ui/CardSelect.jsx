@@ -19,7 +19,7 @@ const CardSelect = ({
   defaultValue,
   styles,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(defaultValue);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
 
   console.log("Selected option: ", selectedOption);
 
@@ -33,26 +33,47 @@ const CardSelect = ({
 
   return (
     <div
-      className={`animate-in fade-in no-scrollbar relative flex w-full grow flex-col gap-2 overflow-auto ${styles}`}
+      className={`animate-in fade-in no-scrollbar relative flex w-full flex-col gap-2 overflow-scroll sm:flex-row sm:justify-center sm:gap-6 sm:px-4 ${styles}`}
     >
       {selectedOption ? (
-        <CardOption
-          onSelect={(e) => {
-            e.preventDefault();
-            handleSelectOption(selectedOption.id);
-          }}
-          isSelected={selectedOption?.id === selectedOption.id}
-          onClose={handleCloseOption}
-        >
-          <OptionComponent
-            data={selectedOption}
-            isSelected={true}
+        <>
+          <CardOption
+            type="lg"
+            onSelect={(e) => {
+              e.preventDefault();
+              handleSelectOption(selectedOption.id);
+            }}
+            isSelected={selectedOption?.id === selectedOption.id}
             onClose={handleCloseOption}
-          />
-        </CardOption>
+          >
+            <OptionComponent
+              data={selectedOption}
+              isSelected={true}
+              onClose={handleCloseOption}
+            />
+          </CardOption>
+          <div className="my-8 hidden w-px bg-stone-200 sm:block" />
+          <div className="sm:no-scrollbar hidden gap-2 py-5 sm:flex sm:flex-col sm:overflow-scroll sm:mask-y-from-95">
+            {options.map((option) => (
+              <CardOption
+                type="sm"
+                key={option.id}
+                onSelect={(e) => {
+                  e.preventDefault();
+                  handleSelectOption(option.id);
+                }}
+                isSelected={selectedOption?.id === option.id}
+                isClosed={true}
+              >
+                <OptionComponent data={option} />
+              </CardOption>
+            ))}
+          </div>
+        </>
       ) : (
         options.map((option) => (
           <CardOption
+            type="sm"
             key={option.id}
             onSelect={(e) => {
               e.preventDefault();

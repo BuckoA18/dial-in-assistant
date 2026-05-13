@@ -7,7 +7,7 @@ const TasteFeedbackProfile = ({ data, isSelected }) => {
   const { label, description, sliderLabels, notes, icon: Icon } = data;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
         <Icon size={24} />
         <span>

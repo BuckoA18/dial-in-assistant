@@ -31,7 +31,7 @@ const WheelPicker = ({ min, max, step = 1, lastClickValue = 25 }) => {
   };
 
   return (
-    <div className="mt-2 flex flex-col items-center mask-x-from-72">
+    <div className="mt-2 flex flex-col items-center">
       <span className="text-4xl font-bold tracking-wide">{currentValue}</span>
       <div className="relative flex w-76 items-center">
         <div className="pointer-events-none absolute left-1/2 z-10 h-20 w-12 -translate-x-1/2 rounded-sm border-3 border-stone-600 bg-transparent shadow-sm"></div>

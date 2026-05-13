@@ -20,7 +20,7 @@ const StepFormContent = ({ currentStep }) => {
   const [extractionTime, setExtractionTime] = useState(null);
   if (currentStep === 1)
     return (
-      <div className="flex grow items-center px-2 py-4">
+      <div className="grow px-2 py-4">
         <CardSelect
           key="coffee-selection"
           options={coffeeInventory}
@@ -32,7 +32,7 @@ const StepFormContent = ({ currentStep }) => {
     );
   if (currentStep === 2)
     return (
-      <div className="animate-in fade-in flex grow flex-col items-center justify-between px-2">
+      <div className="flex grow flex-col px-2 py-4 sm:mx-auto sm:max-w-5xl sm:px-4">
         <CardSelect
           key="grind-selection"
           options={grindHistory}
@@ -40,61 +40,65 @@ const StepFormContent = ({ currentStep }) => {
           styles="max-h-72"
           defaultValue={grindHistory[1]}
         />
-        <WheelPicker min={1} max={50} />
+        <span className="sm:hidden">
+          <WheelPicker min={1} max={50} />
+        </span>
       </div>
     );
   if (currentStep === 3)
     return (
-      <div className="animate-in fade-in flex grow flex-col justify-between px-2">
-        <div className="flex flex-col gap-2">
-          <span>
-            <Label forId="dose">Dose (g)</Label>
+      <div className="flex grow flex-col gap-6 px-2 py-4 sm:mx-auto sm:max-w-5xl sm:flex-row sm:justify-center sm:gap-12">
+        <div className="flex flex-col gap-5 sm:w-1/2 sm:justify-center">
+          <div className="flex flex-col gap-1.5 sm:items-center sm:gap-4">
             <Input
               id="dose"
-              placeholder=""
+              className="sm:col-span-3"
+              placeholder="Dose (g)"
               onChange={(e) => setDose(e.target.value)}
             />
-          </span>
-          <span>
-            <Label forId="yield">Yield (g)</Label>
-            <Input
-              id="yield"
-              placeholder=""
-              onChange={(e) => setcoffeeYield(e.target.value)}
-            />
-          </span>
-          <span>
-            <Label forId="extractionTime">Extraction time (g)</Label>
-            <Input
-              id="extractionTime"
-              placeholder=""
-              onChange={(e) => setExtractionTime(e.target.value)}
-            />
-          </span>
+          </div>
+
+          <Input
+            id="yield"
+            className="sm:col-span-2"
+            placeholder="Yield (g)"
+            onChange={(e) => setcoffeeYield(e.target.value)}
+          />
+
+          <Input
+            id="extractionTime"
+            className="sm:col-span-2"
+            placeholder="Extraction time (s)"
+            onChange={(e) => setExtractionTime(e.target.value)}
+          />
         </div>
 
-        <Card>
-          <p className="mb-2 text-xs text-stone-400 italic">
-            Compared to latest shot
-          </p>
-          <Grid type="details">
-            <Detail label="Dose">
-              <Difference prevValue={18} unit="g" value={dose} />
-            </Detail>
-            <Detail label="Yeild">
-              <Difference prevValue={32} unit="g" value={coffeeYield} />
-            </Detail>
-            <Detail label="Extraction Time">
-              <Difference prevValue={24} unit="s" value={extractionTime} />
-            </Detail>
-          </Grid>
-        </Card>
+        <div className="my-8 hidden w-px bg-stone-200 sm:block" />
+
+        <div className="sm:flex sm:grow sm:items-center">
+          <Card styles="w-full sm:h-fit sm:border-none sm:shadow-none">
+            <p className="mb-4 text-xs text-stone-400 italic">
+              Compared to latest shot
+            </p>
+            <Grid type="details">
+              <Detail label="Dose">
+                <Difference prevValue={18} unit="g" value={dose} />
+              </Detail>
+              <Detail label="Yield">
+                <Difference prevValue={32} unit="g" value={coffeeYield} />
+              </Detail>
+              <Detail label="Time">
+                <Difference prevValue={24} unit="s" value={extractionTime} />
+              </Detail>
+            </Grid>
+          </Card>
+        </div>
       </div>
     );
 
   if (currentStep === 4)
     return (
-      <div className="animate-in fade-in flex grow px-2">
+      <div className="animate-in fade-in grow px-2 py-4">
         <CardSelect
           key="grind-selection"
           options={TasteProfiles}

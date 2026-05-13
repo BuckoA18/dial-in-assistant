@@ -33,10 +33,10 @@ const CoffeeProfile = ({ data, isSelected }) => {
           <RoastLevel roastLevel={roastLevel} />
 
           <Grid type="details">
-            <Detail label="Origin" value={origin} />
-            <Detail label="Method" value={method} />
-            <Detail label="Altitude" value={`${altitude} m.a.s.l.`} />
-            <Detail label="Variety" value={variety} />
+            <Detail label="Origin">{origin}</Detail>
+            <Detail label="Method">{method}</Detail>
+            <Detail label="Altitude">{`${altitude} m.a.s.l.`}</Detail>
+            <Detail label="Variety">{variety}</Detail>
           </Grid>
 
           {notes.length > 0 && (

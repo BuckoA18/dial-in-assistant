@@ -25,9 +25,9 @@ const GrindProfile = ({ data, isSelected, isLatest }) => {
             </div>
           )}
           <Grid type="details">
-            <Detail label="Dose" value={dose} />
-            <Detail label="Coffee Out" value={coffeeYield} />
-            <Detail label="Extraction time" value={time} />
+            <Detail label="Dose">{dose}</Detail>
+            <Detail label="Coffee Out">{coffeeYield}</Detail>
+            <Detail label="Extraction time">{time}</Detail>
           </Grid>
         </>
       )}

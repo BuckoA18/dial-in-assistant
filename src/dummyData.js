@@ -1,3 +1,5 @@
+import { Droplets, Flame, CheckCircle2Icon } from "lucide-react";
+
 export const coffeeInventory = [
   {
     id: 0,
@@ -178,20 +180,23 @@ export const TasteProfiles = [
     label: "Sour / Acidic",
     description: "Sharp, vinegary, or salty notes",
     notes: ["Salty", "Sharp", "Thin/Watery", "Metallic"],
-    sliderLabels: ["Wincing Sour", "Bright/Tart", "Sweetly Acidic"],
+    icon: Droplets,
+    sliderLabels: ["Sour", "Sweetly Acidic"],
   },
   {
     id: "balanced",
     label: "Sweet / Balanced",
-    description: "The 'Golden Shot'—syrupy and rich",
+    description: "Sweet, syrupy and rich",
+    icon: CheckCircle2Icon,
     notes: ["Caramel", "Chocolate", "Fruity", "Velvety"],
-    sliderLabels: ["Good", "Great", "Perfect"],
+    sliderLabels: ["OK", "Perfect"],
   },
   {
     id: "bitter",
     label: "Bitter / Harsh",
     description: "Dry, ashy, or burnt flavors",
+    icon: Flame,
     notes: ["Ashy", "Dry/Astringent", "Tobacco", "Medicinal"],
-    sliderLabels: ["Heavy/Bold", "Very Bitter", "Unpleasantly Ashy"],
+    sliderLabels: ["Very Bitter", "Bitter Sweet"],
   },
 ];

@@ -18,10 +18,9 @@ const CardSelect = ({
   optionComponent: OptionComponent,
   defaultValue,
   styles,
+  createOptionComponent: CreateOptionComponent,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
-
-  console.log("Selected option: ", selectedOption);
+  const [selectedOption, setSelectedOption] = useState(defaultValue);
 
   const handleSelectOption = (id) => {
     if (selectedOption?.id === id) return;
@@ -68,22 +67,34 @@ const CardSelect = ({
                 <OptionComponent data={option} />
               </CardOption>
             ))}
+            {CreateOptionComponent && (
+              <CardOption type="sm">
+                <CreateOptionComponent />
+              </CardOption>
+            )}
           </div>
         </>
       ) : (
-        options.map((option) => (
-          <CardOption
-            type="sm"
-            key={option.id}
-            onSelect={(e) => {
-              e.preventDefault();
-              handleSelectOption(option.id);
-            }}
-            isSelected={selectedOption?.id === option.id}
-          >
-            <OptionComponent data={option} />
-          </CardOption>
-        ))
+        <div className="flex flex-col gap-2">
+          {options.map((option) => (
+            <CardOption
+              type="sm"
+              key={option.id}
+              onSelect={(e) => {
+                e.preventDefault();
+                handleSelectOption(option.id);
+              }}
+              isSelected={selectedOption?.id === option.id}
+            >
+              <OptionComponent data={option} />
+            </CardOption>
+          ))}
+          {CreateOptionComponent && (
+            <CardOption type="sm">
+              <CreateOptionComponent />
+            </CardOption>
+          )}
+        </div>
       )}
     </div>
   );

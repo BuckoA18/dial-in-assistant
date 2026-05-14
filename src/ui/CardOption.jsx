@@ -13,7 +13,7 @@ const CardOption = ({
   if (type === "lg")
     return (
       <div
-        className={`animate-in slide-in-from-top-5 relative rounded-2xl border-2 p-4 transition-colors sm:my-auto sm:w-sm sm:border-none`}
+        className={`animate-in slide-in-from-top-5 relative rounded-2xl border-2 border-stone-200 p-4 shadow-sm transition-colors sm:my-auto sm:w-sm sm:border-none sm:shadow-none`}
         onClick={onSelect}
       >
         {children}

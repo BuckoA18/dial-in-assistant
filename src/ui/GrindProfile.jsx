@@ -5,17 +5,23 @@ import Detail from "./Detail";
 import Badge from "./Badge";
 
 const GrindProfile = ({ data, isSelected, isLatest }) => {
-  const { id, description, grindSetting, date, dose, coffeeYield, time } = data;
+  const {
+    id,
+    created_at: date,
+    grinder_setting: grinderSetting,
+    dose,
+    yield: coffeeYield,
+    extraction_time,
+  } = data;
 
   return (
     <div className={`flex flex-col`}>
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-bold text-stone-800">
-          {grindSetting} Clicks
+          {grinderSetting} Clicks
         </h3>
         <time className="text-xs font-medium text-stone-400">{date}</time>
       </div>
-      <p className="text-sm font-medium text-stone-500 italic">{description}</p>
 
       {isSelected && (
         <>
@@ -27,7 +33,7 @@ const GrindProfile = ({ data, isSelected, isLatest }) => {
           <Grid type="details">
             <Detail label="Dose">{dose}</Detail>
             <Detail label="Coffee Out">{coffeeYield}</Detail>
-            <Detail label="Extraction time">{time}</Detail>
+            <Detail label="Extraction time">{extraction_time}</Detail>
           </Grid>
         </>
       )}

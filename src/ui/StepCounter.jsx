@@ -2,6 +2,8 @@ import React from "react";
 import { Coffee, Star, Zap, Cog, ArrowLeft } from "lucide-react";
 import Step from "./Step";
 import Button from "./Button";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement } from "../features/stepForm/stepCounterSlice";
 
 const STEPS = [
   {
@@ -30,7 +32,9 @@ const STEPS = [
   },
 ];
 
-const StepCounter = ({ currentStep, onChangeStep }) => {
+const StepCounter = () => {
+  const dispatch = useDispatch();
+  const currentStep = useSelector((state) => state.counter.value);
   return (
     <div className="relative flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs sm:gap-4">
       <div className="flex w-full items-center justify-around gap-1 sm:max-w-98 sm:gap-2">
@@ -39,21 +43,19 @@ const StepCounter = ({ currentStep, onChangeStep }) => {
             step={step.step}
             isActive={currentStep === step.step}
             key={step.step}
-            isLast={step.step === 4}
-            onChangeStep={onChangeStep}
             label={step.label}
             isComplete={step.isComplete}
           />
         ))}
       </div>
 
-      <StepLabel>{STEPS[currentStep - 1].label}</StepLabel>
+      <StepLabel>{STEPS[currentStep].label}</StepLabel>
       <Button
         type="icon"
         styles="absolute bottom-2 left-1 sm:hidden"
         onClick={(e) => {
           e.preventDefault();
-          onChangeStep(currentStep - 1);
+          dispatch(decrement());
         }}
       >
         <ArrowLeft size={22} />

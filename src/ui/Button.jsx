@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ children, onClick, disabled, type = "primary", styles }) => {
   const baseStyles =
-    "text-base flexitems-center w-full justify-center rounded-xl border-2  px-6 py-3 text-lg font-bold shadow-sm transition-all focus:ring-4 focus:outline-none active:scale-95 sm:w-40";
+    "text-base w-full rounded-xl border-2  px-6 py-3 text-lg font-bold shadow-sm transition-all focus:ring-4 focus:outline-none active:scale-95 ";
   if (type === "secondary")
     return (
       <button
@@ -27,9 +27,10 @@ const Button = ({ children, onClick, disabled, type = "primary", styles }) => {
 
   return (
     <button
-      className={`border-orange-400 bg-orange-300 px-6 py-3 text-lg font-bold text-stone-800 shadow-sm focus:ring-orange-400 ${baseStyles} ${styles}`}
+      className={`border-orange-400 bg-orange-300 px-6 py-3 text-lg font-bold text-stone-800 shadow-sm focus:ring-orange-400 ${baseStyles} ${styles} `}
       onClick={onClick}
       disabled={disabled}
+      aria-label="Sat as active coffee"
     >
       {children}
     </button>

@@ -1,5 +1,4 @@
 import React from "react";
-import CardOption from "./CardOption";
 import Grid from "./Grid";
 import Detail from "./Detail";
 import Badge from "./Badge";

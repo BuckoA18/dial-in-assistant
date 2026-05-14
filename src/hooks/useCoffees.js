@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../lib/supabase";
 
-export const useBeans = () => {
+export const useCoffees = () => {
   return useQuery({
-    queryKey: ["beans"],
+    queryKey: ["coffees"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("beans")

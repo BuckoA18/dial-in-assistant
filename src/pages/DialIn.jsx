@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { grindHistory, TasteProfiles } from "../dummyData";
-import { MoveRight } from "lucide-react";
+import { DiscAlbum, MoveRight } from "lucide-react";
 import Button from "../ui/Button";
 import StepForm from "../ui/StepForm";
 import StepCounter from "../ui/StepCounter";
-import CoffeeProfile from "../ui/CoffeeProfile";
-import CardSelect from "../ui/CardSelect";
 import GrindProfile from "../ui/GrindProfile";
 import TasteFeedbackProfile from "../ui/TasteFeedbackProfile";
 import WheelPicker from "../ui/WheelPicker";
@@ -15,22 +12,21 @@ import Grid from "../ui/Grid";
 import Detail from "../ui/Detail";
 import CoffeeStep from "../features/stepForm/CoffeeStep";
 import GrinderStep from "../features/stepForm/GrinderStep";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../features/stepForm/stepCounterSlice";
 
 const MIN_STEP = 1;
 const MAX_STEP = 4;
 
 const DialIn = () => {
+  const dispatch = useDispatch();
+  const currentStep = useSelector((state) => state.counter.value);
+
   const [formData, setFormData] = useState({
     dose: "",
     yield: "",
     time: "",
   });
-  const [currentStep, setCurrentStep] = useState(1);
-
-  const handleChangeStep = (nextStep) => {
-    if (nextStep < MIN_STEP || nextStep > MAX_STEP) return;
-    setCurrentStep(nextStep);
-  };
 
   const updateField = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -39,10 +35,7 @@ const DialIn = () => {
   return (
     <div className="flex h-dvh flex-col">
       <header>
-        <StepCounter
-          currentStep={currentStep}
-          onChangeStep={handleChangeStep}
-        />
+        <StepCounter />
       </header>
       <StepForm currentStep={currentStep}>
         <CoffeeStep />
@@ -50,34 +43,6 @@ const DialIn = () => {
         <ShotStep formData={formData} updateField={updateField} />
         <TasteStep />
       </StepForm>
-      <footer className="w-full px-2 pb-2 sm:flex sm:justify-end sm:gap-2">
-        {currentStep <= MAX_STEP ? (
-          <>
-            <Button
-              type="secondary"
-              styles="hidden sm:block"
-              onClick={(e) => {
-                e.preventDefault();
-                handleChangeStep(currentStep - 1);
-              }}
-            >
-              Back
-            </Button>
-            <Button
-              type="primary"
-              onClick={(e) => {
-                e.preventDefault();
-                handleChangeStep(currentStep + 1);
-              }}
-              styles=""
-            >
-              Next
-            </Button>
-          </>
-        ) : (
-          <Button type="submit">Analyze Shot</Button>
-        )}
-      </footer>
     </div>
   );
 };

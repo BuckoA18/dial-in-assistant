@@ -1,36 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { DiscAlbum, MoveRight } from "lucide-react";
 import Button from "../ui/Button";
-import StepForm from "../ui/StepForm";
-import StepCounter from "../ui/StepCounter";
-import GrindProfile from "../ui/GrindProfile";
-import TasteFeedbackProfile from "../ui/TasteFeedbackProfile";
-import WheelPicker from "../ui/WheelPicker";
+import StepForm from "../features/stepForm/components/StepForm";
+import StepCounter from "../features/stepForm/components/StepCounter";
 import Input from "../ui/Input";
 import Card from "../ui/Card";
 import Grid from "../ui/Grid";
 import Detail from "../ui/Detail";
-import CoffeeStep from "../features/stepForm/CoffeeStep";
-import GrinderStep from "../features/stepForm/GrinderStep";
-import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "../features/stepForm/stepCounterSlice";
+import CoffeeStep from "../features/stepForm/components/CoffeeStep";
+import GrinderStep from "../features/stepForm/components/GrinderStep";
+import { useSelector } from "react-redux";
 
 const MIN_STEP = 1;
 const MAX_STEP = 4;
 
 const DialIn = () => {
-  const dispatch = useDispatch();
-  const currentStep = useSelector((state) => state.counter.value);
-
-  const [formData, setFormData] = useState({
-    dose: "",
-    yield: "",
-    time: "",
-  });
-
-  const updateField = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+  const { currentStep, formData } = useSelector((state) => state.stepForm);
 
   return (
     <div className="flex h-dvh flex-col">
@@ -40,8 +25,8 @@ const DialIn = () => {
       <StepForm currentStep={currentStep}>
         <CoffeeStep />
         <GrinderStep />
-        <ShotStep formData={formData} updateField={updateField} />
-        <TasteStep />
+        {/* <ShotStep formData={formData} updateField={updateField} />
+        <TasteStep /> */}
       </StepForm>
     </div>
   );

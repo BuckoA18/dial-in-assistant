@@ -1,9 +1,9 @@
 import React from "react";
 import { Coffee, Star, Zap, Cog, ArrowLeft } from "lucide-react";
 import Step from "./Step";
-import Button from "./Button";
+import Button from "../../../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement } from "../features/stepForm/stepCounterSlice";
+import { decrement } from "../stepFormSlice";
 
 const STEPS = [
   {
@@ -34,10 +34,10 @@ const STEPS = [
 
 const StepCounter = () => {
   const dispatch = useDispatch();
-  const currentStep = useSelector((state) => state.counter.value);
+  const { currentStep } = useSelector((state) => state.stepForm);
   return (
-    <div className="relative flex w-full flex-col items-center gap-2 rounded-b-xl border-2 border-stone-200 shadow-xs sm:gap-4">
-      <div className="flex w-full items-center justify-around gap-1 sm:max-w-98 sm:gap-2">
+    <div className="relative flex w-full flex-col items-center gap-2 sm:border-none sm:shadow-none">
+      <div className="flex w-full items-center gap-1 sm:max-w-98 sm:gap-2">
         {STEPS.map((step) => (
           <Step
             step={step.step}
@@ -49,7 +49,7 @@ const StepCounter = () => {
         ))}
       </div>
 
-      <StepLabel>{STEPS[currentStep].label}</StepLabel>
+      <StepLabel>{STEPS[currentStep - 1].label}</StepLabel>
       <Button
         type="icon"
         styles="absolute bottom-2 left-1 sm:hidden"

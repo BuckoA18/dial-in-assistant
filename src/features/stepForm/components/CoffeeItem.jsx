@@ -1,12 +1,12 @@
 import { ChevronRight } from "lucide-react";
-import Button from "./Button";
+import Button from "../../../ui/Button";
 
 const CoffeeItem = ({ data, onClick, isOpen }) => {
   const { id, name = "Unknown", roaster = "", countryCode = "BR" } = data || {};
 
   return (
     <li
-      className={`animate-in slide-in-from-top-5 relative flex flex-col gap-4 p-4 transition-colors sm:w-2xs`}
+      className={`animate-in slide-in-from-top-5 relative flex flex-col gap-4 rounded-xl border p-4 transition-colors sm:w-2xs ${isOpen ? " border-orange-400 bg-orange-100 shadow-sm" : " border-stone-200"}`}
       onClick={() => {
         if (!isOpen) onClick(id);
       }}
@@ -14,7 +14,10 @@ const CoffeeItem = ({ data, onClick, isOpen }) => {
       <Button
         type="icon"
         styles={`absolute right-0 z-99 transition-transform ${isOpen && "rotate-90"}`}
-        onClick={() => onClick(id)}
+        onClick={(e) => {
+          e.preventDefault();
+          onClick(id);
+        }}
       >
         <ChevronRight />
       </Button>

@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import stepCounterReducer from "./features/stepForm/stepCounterSlice";
+import stepFormReducer from "./features/stepForm/stepFormSlice";
 import coffeeReducer from "./features/coffee/coffeeSlice";
 export const store = configureStore({
   reducer: {
-    counter: stepCounterReducer,
+    stepForm: stepFormReducer,
     coffee: coffeeReducer,
   },
 });

@@ -5,8 +5,11 @@ import Grid from "../../ui/Grid";
 import Detail from "../../ui/Detail";
 import Badge from "../../ui/Badge";
 import { ChevronDown } from "lucide-react";
+import { increment } from "../stepForm/stepFormSlice";
+import { useDispatch } from "react-redux";
 
 const CoffeeDetails = ({ data, onClose }) => {
+  const dispatch = useDispatch();
   const {
     id,
     name = "Unknown",
@@ -63,7 +66,14 @@ const CoffeeDetails = ({ data, onClose }) => {
           </div>
         </div>
 
-        <Button type="primary" styles="mt-auto">
+        <Button
+          type="primary"
+          styles="mt-auto"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(increment());
+          }}
+        >
           Set as active
         </Button>
       </div>

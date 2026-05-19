@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const StepForm = ({ children }) => {
-  const currentStep = useSelector((state) => state.counter.value);
+  const { currentStep } = useSelector((state) => state.stepForm);
 
   const steps = React.Children.toArray(children);
   const currentStepView = steps[currentStep - 1];

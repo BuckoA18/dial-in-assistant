@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Input from "./Input";
 import Label from "./Label";
 
-const WheelPicker = ({ min, max, step = 1, lastClickValue = 25 }) => {
+const WheelPicker = ({ min = 1, max = 50, step = 1, lastClickValue = 25 }) => {
   const [currentValue, setCurrentValue] = useState(lastClickValue);
 
   const scrollRef = useRef(null);

@@ -25,7 +25,7 @@ const CoffeeDetails = ({ data, onClose }) => {
 
   return (
     <div
-      className={`animate-in slide-in-from-right-10 relative flex h-full grow flex-col gap-4 border-none p-4 shadow-none transition-colors sm:w-xs`}
+      className={`animate-in slide-in-from-right-10 relative flex h-full grow flex-col gap-4 border-none shadow-none transition-colors sm:w-xs`}
     >
       <Button
         type="icon"
@@ -84,10 +84,10 @@ const CoffeeDetails = ({ data, onClose }) => {
 const CoffeeProfileHeading = ({ countryCode, roaster, name }) => {
   return (
     <div className="relative">
-      <div className="flex items-center gap-2">
+      <span className="flex items-center gap-2">
         {countryCode && <CountryFlag countryCode={countryCode} />}
-        <h2 className="text-2xl font-bold text-stone-800">{name}</h2>
-      </div>
+        <h3 className="text-2xl font-bold text-stone-800">{name}</h3>
+      </span>
       <p className="text-sm font-medium text-stone-500 italic">{roaster}</p>
     </div>
   );

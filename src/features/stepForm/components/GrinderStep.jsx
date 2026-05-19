@@ -4,40 +4,61 @@ import GrindProfile from "../../../ui/GrindProfile";
 import WheelPicker from "../../../ui/WheelPicker";
 import ShotItem from "./ShotItem";
 import ShotDetails from "./ShotDetails";
+import Button from "../../../ui/Button";
+import { useDispatch } from "react-redux";
+import { increment } from "../stepFormSlice";
+import Input from "../../../ui/Input";
 
 const GrinderStep = () => {
   const { data: shots, error, isLoading } = useShots();
-  const [activeShot, setActiveShot] = useState(null);
-
+  const dispatch = useDispatch();
   console.log(shots);
 
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <>
-      <div className="grow sm:hidden">
-        {activeShot && <ShotDetails data={activeShot} />}
-        {!activeShot && (
-          <ul className="flex h-full max-w-xl flex-col justify-center gap-2">
-            {shots?.map((bean) => (
-              <ShotItem data={bean} key={bean.id} />
-            ))}
-          </ul>
-        )}
+      <div className="flex h-full flex-col sm:hidden">
+        <ShotDetails />
+        <span className="flex flex-col gap-2">
+          <Input placeholder="Your current grinder setting" />
+          <Button
+            type="primary"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(increment());
+            }}
+          >
+            Next step
+          </Button>
+        </span>
       </div>
 
       <div className="hidden max-w-2xl grow justify-center gap-6 sm:flex">
-        <ul className="flex h-full max-w-xl flex-col justify-center gap-1">
-          {shots?.map((coffee) => (
-            <ShotItem
-              data={coffee}
-              key={coffee.id}
-              isOpen={activeShot?.id === coffee.id}
-            />
-          ))}
-        </ul>
-        {activeShot && <div className="my-8 w-px bg-stone-200"></div>}
-        {activeShot && <ShotDetails data={activeShot} />}
+        {shots.length > 0 && (
+          <ul className="flex flex-col justify-center gap-1">
+            {shots.map((shot) => (
+              <ShotItem key={shot.id} data={shot} />
+            ))}
+          </ul>
+        )}
+
+        <div className="flex flex-col gap-8">
+          <ShotDetails />
+
+          <span className="flex flex-col gap-2">
+            <Input placeholder="Your current grinder setting" />
+            <Button
+              type="primary"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(increment());
+              }}
+            >
+              Next step
+            </Button>
+          </span>
+        </div>
       </div>
     </>
   );

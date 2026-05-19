@@ -6,7 +6,7 @@ const CoffeeItem = ({ data, onClick, isOpen }) => {
 
   return (
     <li
-      className={`animate-in slide-in-from-top-5 relative flex flex-col gap-4 rounded-xl border p-4 transition-colors sm:w-2xs ${isOpen ? " border-orange-400 bg-orange-100 shadow-sm" : " border-stone-200"}`}
+      className={`relative flex flex-col gap-4 rounded-xl border p-4 transition-colors sm:w-2xs ${isOpen ? " border-orange-400 bg-orange-100 shadow-sm" : " border-stone-200"}`}
       onClick={() => {
         if (!isOpen) onClick(id);
       }}
